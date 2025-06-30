@@ -6,538 +6,1016 @@
     <title>أسحاق شوقي الشويع - مهندس تكنولوجيا المعلومات</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     
     <style>
+        :root {
+            --primary-bg: #002244;
+            --secondary-bg: #003366;
+            --accent-bg: #004488;
+            --orange-primary: #ff6600;
+            --orange-secondary: #ff8833;
+            --orange-light: #ffaa33;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+        }
+        
         * {
             font-family: 'Cairo', sans-serif;
         }
         
+        .amiri-font {
+            font-family: 'Amiri', serif;
+        }
+        
         body {
-            background: #002244;
+            background: var(--primary-bg);
             color: white;
-            line-height: 1.6;
+            line-height: 1.7;
+            overflow-x: hidden;
         }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, #002244 0%, #003366 50%, #004488 100%);
+        /* Advanced Background */
+        .hero-background {
+            background: linear-gradient(135deg, 
+                var(--primary-bg) 0%, 
+                var(--secondary-bg) 25%, 
+                var(--accent-bg) 50%, 
+                var(--secondary-bg) 75%, 
+                var(--primary-bg) 100%);
+            position: relative;
         }
         
-        .hover-orange {
-            transition: all 0.3s ease;
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 102, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 136, 51, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 170, 51, 0.05) 0%, transparent 50%);
         }
         
-        .hover-orange:hover {
-            color: #ff6600 !important;
-            transform: translateY(-2px);
+        /* Glass Morphism Effects */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
-        .section-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 40px rgba(255, 102, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
         
-        .section-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        /* Advanced Hover Effects */
+        .hover-glow {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
         }
         
-        .skill-bar {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            height: 8px;
+        .hover-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--orange-primary), var(--orange-secondary));
+            opacity: 0;
+            border-radius: inherit;
+            transition: opacity 0.4s ease;
+            z-index: -1;
         }
         
-        .skill-progress {
-            background: linear-gradient(90deg, #ff6600, #ff8833);
-            height: 100%;
-            border-radius: 10px;
-            transition: width 2s ease-in-out;
+        .hover-glow:hover {
+            color: white !important;
+            transform: translateY(-3px);
+            text-shadow: 0 0 20px rgba(255, 102, 0, 0.8);
         }
         
-        .icon-hover {
-            transition: all 0.3s ease;
+        .hover-glow:hover::before {
+            opacity: 0.1;
         }
         
-        .icon-hover:hover {
-            color: #ff6600;
-            transform: scale(1.2) rotate(10deg);
+        /* Professional Avatar */
+        .avatar-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
         }
         
-        .project-card {
-            background: linear-gradient(135deg, rgba(255, 102, 0, 0.1), rgba(255, 136, 51, 0.05));
-            border-left: 4px solid #ff6600;
-            transition: all 0.3s ease;
+        .avatar-ring {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 220px;
+            height: 220px;
+            border: 3px solid transparent;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--orange-primary), var(--orange-secondary), var(--orange-light)) border-box;
+            animation: rotate 20s linear infinite;
         }
         
-        .project-card:hover {
-            transform: translateX(-10px);
-            box-shadow: 5px 5px 20px rgba(255, 102, 0, 0.2);
+        .avatar-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--secondary-bg), var(--accent-bg));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                inset 0 2px 10px rgba(255, 255, 255, 0.1);
         }
         
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .text-gradient {
-            background: linear-gradient(45deg, #ff6600, #ffaa33);
+        /* Advanced Text Effects */
+        .text-gradient-advanced {
+            background: linear-gradient(
+                135deg,
+                var(--orange-primary) 0%,
+                var(--orange-secondary) 25%,
+                var(--orange-light) 50%,
+                var(--orange-secondary) 75%,
+                var(--orange-primary) 100%
+            );
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
         }
         
-        .contact-btn {
-            background: linear-gradient(45deg, #ff6600, #ff8833);
-            transition: all 0.3s ease;
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         
-        .contact-btn:hover {
-            background: linear-gradient(45deg, #ff8833, #ffaa33);
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(255, 102, 0, 0.4);
+        /* Professional Buttons */
+        .btn-professional {
+            background: linear-gradient(135deg, var(--orange-primary), var(--orange-secondary));
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .btn-professional::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        .btn-professional:hover::before {
+            left: 100%;
+        }
+        
+        .btn-professional:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 15px 35px rgba(255, 102, 0, 0.4),
+                0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Skills Progress Bars */
+        .skill-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-bar-advanced {
+            width: 100%;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress-advanced {
+            height: 100%;
+            background: linear-gradient(90deg, var(--orange-primary), var(--orange-secondary), var(--orange-light));
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            transition: width 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .skill-progress-advanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Advanced Project Cards */
+        .project-card-advanced {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .project-card-advanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange-primary), var(--orange-secondary), var(--orange-light));
+        }
+        
+        .project-card-advanced:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(255, 102, 0, 0.3);
+        }
+        
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) { animation-delay: 0s; }
+        .floating-element:nth-child(2) { animation-delay: 2s; }
+        .floating-element:nth-child(3) { animation-delay: 4s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(5deg); }
+            66% { transform: translateY(-10px) rotate(-5deg); }
+        }
+        
+        /* Timeline Advanced */
+        .timeline-advanced {
+            position: relative;
+            padding-right: 40px;
+        }
+        
+        .timeline-advanced::before {
+            content: '';
+            position: absolute;
+            right: 15px;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--orange-primary), var(--orange-secondary), transparent);
+        }
+        
+        .timeline-item-advanced {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border-right: 3px solid var(--orange-primary);
+        }
+        
+        .timeline-item-advanced::before {
+            content: '';
+            position: absolute;
+            right: -9px;
+            top: 1.5rem;
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(45deg, var(--orange-primary), var(--orange-secondary));
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
+        }
+        
+        /* Advanced Icons */
+        .icon-3d {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+        
+        .icon-3d:hover {
+            transform: scale(1.2) rotateY(15deg);
+            color: var(--orange-primary);
+            filter: drop-shadow(0 8px 16px rgba(255, 102, 0, 0.4));
+        }
+        
+        /* Responsive Typography */
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 600;
+        }
+        
+        /* Particle Animation */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--orange-primary);
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: particleFloat 8s infinite linear;
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Advanced Sections */
+        .section-advanced {
+            padding: 4rem 0;
+            position: relative;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--orange-primary), transparent);
+            margin: 3rem 0;
+        }
+        
+        /* Contact Form Styling */
+        .contact-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--orange-primary), var(--orange-secondary));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .contact-item:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 102, 0, 0.2);
         }
 
-        .timeline-item {
-            position: relative;
-            padding-right: 30px;
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: var(--primary-bg);
+            }
         }
         
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            right: -6px;
-            top: 8px;
-            width: 12px;
-            height: 12px;
-            background: #ff6600;
-            border-radius: 50%;
-            box-shadow: 0 0 20px rgba(255, 102, 0, 0.5);
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            right: -1px;
-            top: 20px;
-            width: 2px;
-            height: calc(100% - 20px);
-            background: linear-gradient(to bottom, #ff6600, transparent);
-        }
-        
-        .timeline-item:last-child::after {
-            display: none;
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .glass-card:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+            
+            .project-card-advanced:hover {
+                transform: translateY(-5px);
+            }
         }
     </style>
 </head>
-<body class="gradient-bg">
-    <!-- Header Section -->
-    <header class="relative overflow-hidden py-20">
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <div class="animate-float mb-8">
-                <div class="w-40 h-40 mx-auto rounded-full bg-gradient-to-r from-orange-500 to-orange-600 p-1 shadow-2xl">
-                    <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center">
-                        <i class="fas fa-user text-6xl text-white"></i>
-                    </div>
+<body class="hero-background">
+    <!-- Floating Particles -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 7s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 8s;"></div>
+    </div>
+
+    <!-- Floating Background Elements -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0">
+        <div class="floating-element absolute top-20 left-10 w-32 h-32 bg-orange-500 opacity-5 rounded-full"></div>
+        <div class="floating-element absolute top-40 right-20 w-24 h-24 bg-orange-400 opacity-5 rounded-full"></div>
+        <div class="floating-element absolute bottom-40 left-1/4 w-20 h-20 bg-orange-600 opacity-5 rounded-full"></div>
+        <div class="floating-element absolute bottom-20 right-1/3 w-28 h-28 bg-orange-300 opacity-5 rounded-full"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative z-10 min-h-screen flex items-center justify-center py-20">
+        <div class="container mx-auto px-6 text-center">
+            <!-- Avatar -->
+            <div class="avatar-container mb-12" data-aos="fade-up" data-aos-duration="1000">
+                <div class="avatar-ring"></div>
+                <div class="avatar-inner">
+                    <i class="fas fa-user text-7xl text-white"></i>
                 </div>
             </div>
-            
-            <h1 class="text-5xl md:text-6xl font-bold mb-4 hover-orange cursor-pointer">
-                أسحاق شوقي الشويع
-            </h1>
-            <p class="text-2xl md:text-3xl text-gradient font-semibold mb-6">
-                مهندس تكنولوجيا المعلومات
-            </p>
-            <p class="text-xl opacity-90 mb-8 max-w-3xl mx-auto">
-                مطور Full-Stack متخصص في تطوير تطبيقات الويب والموبايل باستخدام أحدث التقنيات
-            </p>
-            
-            <div class="flex justify-center space-x-6 space-x-reverse mb-8">
-                <a href="tel:+967770530245" class="contact-btn px-6 py-3 rounded-full font-semibold flex items-center space-x-2 space-x-reverse">
-                    <i class="fas fa-phone"></i>
-                    <span>اتصل بي</span>
-                </a>
-                <a href="mailto:ashaqalshwy@gmail.com" class="contact-btn px-6 py-3 rounded-full font-semibold flex items-center space-x-2 space-x-reverse">
+
+            <!-- Name and Title -->
+            <div data-aos="fade-up" data-aos-delay="200">
+                <h1 class="hero-title amiri-font text-gradient-advanced mb-6 hover-glow cursor-pointer">
+ابو /محمدأسحاق شوقي 
+                </h1>
+                <h2 class="hero-subtitle text-gradient-advanced mb-8">
+                    مهندس تكنولوجيا المعلومات
+                </h2>
+                <p class="text-xl md:text-2xl opacity-90 mb-12 max-w-4xl mx-auto leading-relaxed">
+                    مطور Full-Stack متخصص في تطوير تطبيقات الويب والموبايل باستخدام أحدث التقنيات والذكاء الاصطناعي
+                </p>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-6 mb-16" data-aos="fade-up" data-aos-delay="400">
+                <a href="mailto:ashaqalshwy@gmail.com" class="btn-professional px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center space-x-3 space-x-reverse">
                     <i class="fas fa-envelope"></i>
-                    <span>راسلني</span>
+                    <span>تواصل معي</span>
+                </a>
+                <a href="https://wa.me/967780887739" target="_blank" class="btn-professional px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center space-x-3 space-x-reverse bg-green-500 hover:bg-green-600 text-white">
+    <i class="fab fa-whatsapp"></i>
+    <span>تواصل عبر واتساب</span>
+</a>
+                <a href="tel:+967770530245" class="btn-professional px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center space-x-3 space-x-reverse">
+                    <i class="fas fa-phone"></i>
+                    <span>اتصل الآن</span>
+                </a>
+                <a href="#portfolio" class="btn-professional px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center space-x-3 space-x-reverse">
+                    <i class="fas fa-briefcase"></i>
+                    <span>أعمالي</span>
                 </a>
             </div>
-            
-            <div class="flex justify-center space-x-8 space-x-reverse">
-                <div class="text-center hover-orange cursor-pointer">
-                    <i class="fas fa-phone icon-hover text-2xl mb-2"></i>
-                    <p class="text-sm">+967770530245</p>
+
+            <!-- Contact Info Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6" data-aos="fade-up" data-aos-delay="600">
+                <div class="contact-item text-center hover-glow cursor-pointer">
+                    <i class="fas fa-phone icon-3d text-3xl mb-3"></i>
+                    <p class="text-sm font-semibold">+967770530245</p>
                 </div>
-                <div class="text-center hover-orange cursor-pointer">
-                    <i class="fab fa-whatsapp icon-hover text-2xl mb-2"></i>
-                    <p class="text-sm">+967780887739</p>
+                <div class="contact-item text-center hover-glow cursor-pointer">
+                    <i class="fab fa-whatsapp icon-3d text-3xl mb-3"></i>
+                    <p class="text-sm font-semibold">+967780887739</p>
                 </div>
-                <div class="text-center hover-orange cursor-pointer">
-                    <i class="fas fa-envelope icon-hover text-2xl mb-2"></i>
-                    <p class="text-sm">ashaqalshwy@gmail.com</p>
+                <div class="contact-item text-center hover-glow cursor-pointer">
+                    <i class="fas fa-envelope icon-3d text-3xl mb-3"></i>
+                    <p class="text-sm font-semibold">ashaqalshwy@gmail.com</p>
                 </div>
-                <div class="text-center hover-orange cursor-pointer">
-                    <i class="fas fa-map-marker-alt icon-hover text-2xl mb-2"></i>
-                    <p class="text-sm">اليمن - صنعاء</p>
+                <div class="contact-item text-center hover-glow cursor-pointer">
+                    <i class="fas fa-map-marker-alt icon-3d text-3xl mb-3"></i>
+                    <p class="text-sm font-semibold">اليمن - صنعاء</p>
                 </div>
             </div>
-        </div>
-        
-        <!-- Animated Background Elements -->
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-            <div class="absolute top-20 left-10 w-20 h-20 bg-orange-500 opacity-10 rounded-full animate-pulse"></div>
-            <div class="absolute top-40 right-20 w-16 h-16 bg-orange-400 opacity-10 rounded-full animate-ping"></div>
-            <div class="absolute bottom-20 left-1/4 w-12 h-12 bg-orange-600 opacity-10 rounded-full animate-bounce"></div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 pb-20">
+    <main class="relative z-10 container mx-auto px-6 pb-20">
+        
         <!-- Profile Section -->
-        <section class="section-card rounded-2xl p-8 mb-12">
-            <h2 class="text-3xl font-bold mb-6 text-gradient flex items-center">
-                <i class="fas fa-user-circle ml-4 icon-hover"></i>
-                الملف الشخصي
-            </h2>
-            <p class="text-lg leading-relaxed hover-orange cursor-pointer">
-                مهندس برمجيات ومطور Full-Stack بخبرة متميزة في تطوير تطبيقات الويب باستخدام أحدث التقنيات ولغات البرمجة، مع معرفة جيدة بتكامل الشبكات، تصميم قواعد البيانات، وتوظيف الذكاء الاصطناعي في الحلول البرمجية. أتمتع بخبرة عملية في تحليل الأنظمة، تطوير الواجهات الأمامية والخلفية، وبناء تطبيقات موبايل متكاملة، وأسعى لتقديم حلول برمجية عالية الكفاءة والقابلة للتطوير.
-            </p>
+        <section class="section-advanced" data-aos="fade-up">
+            <div class="glass-card rounded-3xl p-8 md:p-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-gradient-advanced flex items-center amiri-font">
+                    <i class="fas fa-user-circle ml-6 icon-3d"></i>
+                    الملف الشخصي
+                </h2>
+                <div class="section-divider"></div>
+                <p class="text-lg md:text-xl leading-relaxed hover-glow cursor-pointer">
+                    مهندس برمجيات ومطور Full-Stack بخبرة متميزة في تطوير تطبيقات الويب باستخدام أحدث التقنيات ولغات البرمجة، مع معرفة جيدة بتكامل الشبكات، تصميم قواعد البيانات، وتوظيف الذكاء الاصطناعي في الحلول البرمجية. أتمتع بخبرة عملية في تحليل الأنظمة، تطوير الواجهات الأمامية والخلفية، وبناء تطبيقات موبايل متكاملة، وأسعى لتقديم حلول برمجية عالية الكفاءة والقابلة للتطوير.
+                </p>
+            </div>
         </section>
 
         <!-- Experience Section -->
-        <section class="section-card rounded-2xl p-8 mb-12">
-            <h2 class="text-3xl font-bold mb-8 text-gradient flex items-center">
-                <i class="fas fa-briefcase ml-4 icon-hover"></i>
-                الخبرة العملية
-            </h2>
-            
-            <div class="timeline-item mb-8">
-                <div class="hover-orange cursor-pointer">
-                    <h3 class="text-2xl font-bold mb-2">مطور ويب Full-Stack (Freelance)</h3>
-                    <p class="text-orange-400 mb-4 font-semibold">منذ أكثر من 3 سنوات</p>
-                    <ul class="space-y-2 text-lg">
-                        <li class="flex items-start">
-                            <i class="fas fa-code text-orange-500 ml-3 mt-1"></i>
-                            تطوير مواقع وتطبيقات ويب متكاملة باستخدام Laravel, PHP, JavaScript, MySQL
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-paint-brush text-orange-500 ml-3 mt-1"></i>
-                            بناء واجهات مستخدم تفاعلية باستخدام React وCSS/HTML وBootstrap
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-database text-orange-500 ml-3 mt-1"></i>
-                            تصميم قواعد بيانات باستخدام SQL Server وMySQL وفق معايير الأمان والكفاءة
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-robot text-orange-500 ml-3 mt-1"></i>
-                            ربط تطبيقات الويب بخدمات الذكاء الاصطناعي وتحليل البيانات الأولي
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-mobile-alt text-orange-500 ml-3 mt-1"></i>
-                            تطوير تطبيقات موبايل باستخدام Flutter وAndroid Studio
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-tools text-orange-500 ml-3 mt-1"></i>
-                            العمل على ERP Pro Onyx في شارع صخر لدى محالت عصر الكمبيوتر
-                        </li>
-                    </ul>
+        <section class="section-advanced" data-aos="fade-up">
+            <div class="glass-card rounded-3xl p-8 md:p-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-gradient-advanced flex items-center amiri-font">
+                    <i class="fas fa-briefcase ml-6 icon-3d"></i>
+                    الخبرة العملية
+                </h2>
+                <div class="section-divider"></div>
+                
+                <div class="timeline-advanced">
+                    <div class="timeline-item-advanced hover-glow cursor-pointer">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-3 text-gradient-advanced">مطور ويب Full-Stack (Freelance)</h3>
+                        <p class="text-orange-400 mb-6 font-bold text-lg">منذ أكثر من 3 سنوات</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="flex items-start space-x-3 space-x-reverse mb-4">
+                                <i class="fas fa-code text-orange-500 mt-1 icon-3d"></i>
+                                <span class="text-lg">تطوير مواقع وتطبيقات ويب متكاملة باستخدام Laravel, PHP, JavaScript, MySQL</span>
+                            </div>
+                            <div class="flex items-start space-x-3 space-x-reverse mb-4">
+                                <i class="fas fa-paint-brush text-orange-500 mt-1 icon-3d"></i>
+                                <span class="text-lg">بناء واجهات مستخدم تفاعلية باستخدام React وCSS/HTML وBootstrap</span>
+                            </div>
+                            <div class="flex items-start space-x-3 space-x-reverse mb-4">
+                                <i class="fas fa-database text-orange-500 mt-1 icon-3d"></i>
+                                <span class="text-lg">تصميم قواعد بيانات باستخدام SQL Server وMySQL وفق معايير الأمان والكفاءة</span>
+                            </div>
+                            <div class="flex items-start space-x-3 space-x-reverse mb-4">
+                                <i class="fas fa-robot text-orange-500 mt-1 icon-3d"></i>
+                                <span class="text-lg">ربط تطبيقات الويب بخدمات الذكاء الاصطناعي وتحليل البيانات الأولي</span>
+                            </div>
+                            <div class="flex items-start space-x-3 space-x-reverse mb-4">
+                                <i class="fas fa-mobile-alt text-orange-500 mt-1 icon-3d"></i>
+                                <span class="text-lg">تطوير تطبيقات موبايل باستخدام Flutter وAndroid Studio</span>
+                            </div>
+                            <div class="flex items-start space-x-3 space-x-reverse mb-4">
+                                <i class="fas fa-tools text-orange-500 mt-1 icon-3d"></i>
+                                <span class="text-lg">العمل على ERP Pro Onyx في شارع صخر لدى محالت عصر الكمبيوتر</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Grid -->
-        <div class="grid md:grid-cols-2 gap-8 mb-12">
-            <!-- Technical Skills -->
-            <section class="section-card rounded-2xl p-8">
-                <h2 class="text-3xl font-bold mb-6 text-gradient flex items-center">
-                    <i class="fas fa-cogs ml-4 icon-hover"></i>
-                    المهارات التقنية
-                </h2>
-                
-                <div class="space-y-6">
-                    <div class="hover-orange cursor-pointer">
-                        <h3 class="text-xl font-semibold mb-3 flex items-center">
-                            <i class="fas fa-globe text-orange-500 ml-3"></i>
-                            تطوير الويب
-                        </h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-orange-500 px-3 py-1 rounded-full text-sm">Laravel</span>
-                            <span class="bg-orange-500 px-3 py-1 rounded-full text-sm">PHP</span>
-                            <span class="bg-orange-500 px-3 py-1 rounded-full text-sm">JavaScript</span>
-                            <span class="bg-orange-500 px-3 py-1 rounded-full text-sm">ASP.NET MVC/Core</span>
-                            <span class="bg-orange-500 px-3 py-1 rounded-full text-sm">Livewire</span>
-                        </div>
-                    </div>
+        <!-- Skills Section -->
+        <section class="section-advanced" data-aos="fade-up">
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Technical Skills -->
+                <div class="glass-card rounded-3xl p-8 md:p-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gradient-advanced flex items-center amiri-font">
+                        <i class="fas fa-cogs ml-4 icon-3d"></i>
+                        المهارات التقنية
+                    </h2>
+                    <div class="section-divider"></div>
                     
-                    <div class="hover-orange cursor-pointer">
-                        <h3 class="text-xl font-semibold mb-3 flex items-center">
-                            <i class="fas fa-desktop text-orange-500 ml-3"></i>
-                            الواجهات الأمامية
-                        </h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-500 px-3 py-1 rounded-full text-sm">React</span>
-                            <span class="bg-blue-500 px-3 py-1 rounded-full text-sm">HTML5</span>
-                            <span class="bg-blue-500 px-3 py-1 rounded-full text-sm">CSS3</span>
-                            <span class="bg-blue-500 px-3 py-1 rounded-full text-sm">Bootstrap</span>
-                            <span class="bg-blue-500 px-3 py-1 rounded-full text-sm">jQuery</span>
+                    <div class="space-y-8">
+                        <div class="skill-container">
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-xl font-bold hover-glow cursor-pointer flex items-center">
+                                    <i class="fas fa-globe text-orange-500 ml-3 icon-3d"></i>
+                                    تطوير الويب
+                                </h3>
+                                <span class="text-orange-400 font-bold">95%</span>
+                            </div>
+                            <div class="skill-bar-advanced">
+                                <div class="skill-progress-advanced" data-width="95"></div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="bg-gradient-to-r from-orange-500 to-orange-600 px-3 py-1 rounded-full text-sm font-semibold">Laravel</span>
+                                <span class="bg-gradient-to-r from-orange-500 to-orange-600 px-3 py-1 rounded-full text-sm font-semibold">PHP</span>
+                                <span class="bg-gradient-to-r from-orange-500 to-orange-600 px-3 py-1 rounded-full text-sm font-semibold">JavaScript</span>
+                                <span class="bg-gradient-to-r from-orange-500 to-orange-600 px-3 py-1 rounded-full text-sm font-semibold">ASP.NET</span>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="hover-orange cursor-pointer">
-                        <h3 class="text-xl font-semibold mb-3 flex items-center">
-                            <i class="fas fa-mobile text-orange-500 ml-3"></i>
-                            تطبيقات الموبايل
-                        </h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-green-500 px-3 py-1 rounded-full text-sm">Flutter</span>
-                            <span class="bg-green-500 px-3 py-1 rounded-full text-sm">Android Studio</span>
+                        
+                        <div class="skill-container">
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-xl font-bold hover-glow cursor-pointer flex items-center">
+                                    <i class="fas fa-desktop text-orange-500 ml-3 icon-3d"></i>
+                                    الواجهات الأمامية
+                                </h3>
+                                <span class="text-orange-400 font-bold">90%</span>
+                            </div>
+                            <div class="skill-bar-advanced">
+                                <div class="skill-progress-advanced" data-width="90"></div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="bg-gradient-to-r from-blue-500 to-blue-600 px-3 py-1 rounded-full text-sm font-semibold">React</span>
+                                <span class="bg-gradient-to-r from-blue-500 to-blue-600 px-3 py-1 rounded-full text-sm font-semibold">HTML5</span>
+                                <span class="bg-gradient-to-r from-blue-500 to-blue-600 px-3 py-1 rounded-full text-sm font-semibold">CSS3</span>
+                                <span class="bg-gradient-to-r from-blue-500 to-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Bootstrap</span>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="hover-orange cursor-pointer">
-                        <h3 class="text-xl font-semibold mb-3 flex items-center">
-                            <i class="fas fa-database text-orange-500 ml-3"></i>
-                            قواعد البيانات
-                        </h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-purple-500 px-3 py-1 rounded-full text-sm">MySQL</span>
-                            <span class="bg-purple-500 px-3 py-1 rounded-full text-sm">SQL Server</span>
-                            <span class="bg-purple-500 px-3 py-1 rounded-full text-sm">Oracle</span>
+                        
+                        <div class="skill-container">
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-xl font-bold hover-glow cursor-pointer flex items-center">
+                                    <i class="fas fa-mobile text-orange-500 ml-3 icon-3d"></i>
+                                    تطبيقات الموبايل
+                                </h3>
+                                <span class="text-orange-400 font-bold">85%</span>
+                            </div>
+                            <div class="skill-bar-advanced">
+                                <div class="skill-progress-advanced" data-width="85"></div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="bg-gradient-to-r from-green-500 to-green-600 px-3 py-1 rounded-full text-sm font-semibold">Flutter</span>
+                                <span class="bg-gradient-to-r from-green-500 to-green-600 px-3 py-1 rounded-full text-sm font-semibold">Android Studio</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-container">
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-xl font-bold hover-glow cursor-pointer flex items-center">
+                                    <i class="fas fa-database text-orange-500 ml-3 icon-3d"></i>
+                                    قواعد البيانات
+                                </h3>
+                                <span class="text-orange-400 font-bold">88%</span>
+                            </div>
+                            <div class="skill-bar-advanced">
+                                <div class="skill-progress-advanced" data-width="88"></div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="bg-gradient-to-r from-purple-500 to-purple-600 px-3 py-1 rounded-full text-sm font-semibold">MySQL</span>
+                                <span class="bg-gradient-to-r from-purple-500 to-purple-600 px-3 py-1 rounded-full text-sm font-semibold">SQL Server</span>
+                                <span class="bg-gradient-to-r from-purple-500 to-purple-600 px-3 py-1 rounded-full text-sm font-semibold">Oracle</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            <!-- Personal Skills -->
-            <section class="section-card rounded-2xl p-8">
-                <h2 class="text-3xl font-bold mb-6 text-gradient flex items-center">
-                    <i class="fas fa-user-friends ml-4 icon-hover"></i>
-                    المهارات الشخصية
-                </h2>
-                
-                <div class="space-y-4">
-                    <div class="hover-orange cursor-pointer flex items-center p-3 rounded-lg bg-white bg-opacity-5">
-                        <i class="fas fa-brain text-orange-500 ml-3"></i>
-                        <span>التفكير التحليلي وحل المشكلات</span>
-                    </div>
-                    <div class="hover-orange cursor-pointer flex items-center p-3 rounded-lg bg-white bg-opacity-5">
-                        <i class="fas fa-users text-orange-500 ml-3"></i>
-                        <span>العمل الجماعي والتواصل الفعال</span>
-                    </div>
-                    <div class="hover-orange cursor-pointer flex items-center p-3 rounded-lg bg-white bg-opacity-5">
-                        <i class="fas fa-graduation-cap text-orange-500 ml-3"></i>
-                        <span>القدرة على التعلم الذاتي</span>
-                    </div>
-                    <div class="hover-orange cursor-pointer flex items-center p-3 rounded-lg bg-white bg-opacity-5">
-                        <i class="fas fa-clock text-orange-500 ml-3"></i>
-                        <span>إدارة الوقت وتحقيق الأهداف</span>
-                    </div>
-                    <div class="hover-orange cursor-pointer flex items-center p-3 rounded-lg bg-white bg-opacity-5">
-                        <i class="fas fa-shield-alt text-orange-500 ml-3"></i>
-                        <span>العمل تحت الضغط والتكيف</span>
+                <!-- Personal Skills -->
+                <div class="glass-card rounded-3xl p-8 md:p-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gradient-advanced flex items-center amiri-font">
+                        <i class="fas fa-user-friends ml-4 icon-3d"></i>
+                        المهارات الشخصية
+                    </h2>
+                    <div class="section-divider"></div>
+                    
+                    <div class="space-y-6">
+                        <div class="contact-item hover-glow cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fas fa-brain text-orange-500 ml-4 text-2xl icon-3d"></i>
+                                <div>
+                                    <h3 class="text-lg font-bold mb-1">التفكير التحليلي وحل المشكلات</h3>
+                                    <p class="text-sm opacity-80">القدرة على تحليل المشاكل المعقدة وإيجاد حلول منهجية</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item hover-glow cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fas fa-users text-orange-500 ml-4 text-2xl icon-3d"></i>
+                                <div>
+                                    <h3 class="text-lg font-bold mb-1">العمل الجماعي والتواصل الفعال</h3>
+                                    <p class="text-sm opacity-80">خبرة في العمل ضمن فرق متنوعة والتواصل مع العملاء</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item hover-glow cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fas fa-graduation-cap text-orange-500 ml-4 text-2xl icon-3d"></i>
+                                <div>
+                                    <h3 class="text-lg font-bold mb-1">القدرة على التعلم الذاتي</h3>
+                                    <p class="text-sm opacity-80">متابعة أحدث التقنيات والأدوات في مجال البرمجة</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item hover-glow cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fas fa-clock text-orange-500 ml-4 text-2xl icon-3d"></i>
+                                <div>
+                                    <h3 class="text-lg font-bold mb-1">إدارة الوقت وتحقيق الأهداف</h3>
+                                    <p class="text-sm opacity-80">تنظيم المهام وتسليم المشاريع في المواعيد المحددة</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item hover-glow cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fas fa-shield-alt text-orange-500 ml-4 text-2xl icon-3d"></i>
+                                <div>
+                                    <h3 class="text-lg font-bold mb-1">العمل تحت الضغط والتكيف</h3>
+                                    <p class="text-sm opacity-80">القدرة على التكيف مع بيئات العمل المختلفة والمواقف الصعبة</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
         <!-- Projects Section -->
-        <section class="section-card rounded-2xl p-8 mb-12">
-            <h2 class="text-3xl font-bold mb-8 text-gradient flex items-center">
-                <i class="fas fa-project-diagram ml-4 icon-hover"></i>
-                نماذج من المشاريع
-            </h2>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="project-card p-6 rounded-lg">
-                    <h3 class="text-xl font-bold mb-3 hover-orange cursor-pointer">منصة يمن فليكس</h3>
-                    <p class="text-gray-300 mb-4">نظام مشاهدة فيديوهات باستخدام Laravel وMySQL</p>
-                    <div class="flex items-center">
-                        <i class="fas fa-play-circle text-orange-500 ml-2"></i>
-                        <span class="text-sm">Laravel • MySQL</span>
-                    </div>
-                </div>
+        <section id="portfolio" class="section-advanced" data-aos="fade-up">
+            <div class="glass-card rounded-3xl p-8 md:p-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-gradient-advanced flex items-center amiri-font">
+                    <i class="fas fa-project-diagram ml-6 icon-3d"></i>
+                    نماذج من المشاريع
+                </h2>
+                <div class="section-divider"></div>
                 
-                <div class="project-card p-6 rounded-lg">
-                    <h3 class="text-xl font-bold mb-3 hover-orange cursor-pointer">منصة توظيف إلكتروني</h3>
-                    <p class="text-gray-300 mb-4">باستخدام Laravel وLivewire</p>
-                    <div class="flex items-center">
-                        <i class="fas fa-briefcase text-orange-500 ml-2"></i>
-                        <span class="text-sm">Laravel • Livewire</span>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="project-card-advanced p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-play-circle text-orange-500 text-3xl ml-4 icon-3d"></i>
+                            <h3 class="text-xl font-bold hover-glow cursor-pointer">منصة يمن فليكس</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4 leading-relaxed">نظام مشاهدة فيديوهات متطور باستخدام Laravel وMySQL مع واجهة مستخدم احترافية</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-red-500 px-2 py-1 rounded text-xs">Laravel</span>
+                            <span class="bg-blue-500 px-2 py-1 rounded text-xs">MySQL</span>
+                            <span class="bg-green-500 px-2 py-1 rounded text-xs">Streaming</span>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="project-card p-6 rounded-lg">
-                    <h3 class="text-xl font-bold mb-3 hover-orange cursor-pointer">منبر العلم</h3>
-                    <p class="text-gray-300 mb-4">منصة تعليمية تفاعلية (قيد الإنجاز)</p>
-                    <div class="flex items-center">
-                        <i class="fas fa-graduation-cap text-orange-500 ml-2"></i>
-                        <span class="text-sm">تعليمية</span>
+                    
+                    <div class="project-card-advanced p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-briefcase text-orange-500 text-3xl ml-4 icon-3d"></i>
+                            <h3 class="text-xl font-bold hover-glow cursor-pointer">منصة توظيف إلكتروني</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4 leading-relaxed">منصة متكاملة للتوظيف باستخدام Laravel وLivewire مع خصائص تفاعلية متقدمة</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-red-500 px-2 py-1 rounded text-xs">Laravel</span>
+                            <span class="bg-purple-500 px-2 py-1 rounded text-xs">Livewire</span>
+                            <span class="bg-yellow-500 px-2 py-1 rounded text-xs">AJAX</span>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="project-card p-6 rounded-lg">
-                    <h3 class="text-xl font-bold mb-3 hover-orange cursor-pointer">نظام إدارة الفنادق</h3>
-                    <p class="text-gray-300 mb-4">تطوير قواعد بيانات وحجوزات باستخدام PHP</p>
-                    <div class="flex items-center">
-                        <i class="fas fa-hotel text-orange-500 ml-2"></i>
-                        <span class="text-sm">PHP • Database</span>
+                    
+                    <div class="project-card-advanced p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-graduation-cap text-orange-500 text-3xl ml-4 icon-3d"></i>
+                            <h3 class="text-xl font-bold hover-glow cursor-pointer">منبر العلم</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4 leading-relaxed">منصة تعليمية تفاعلية مع نظام إدارة محتوى متطور (قيد الإنجاز)</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-500 px-2 py-1 rounded text-xs">React</span>
+                            <span class="bg-green-500 px-2 py-1 rounded text-xs">Node.js</span>
+                            <span class="bg-orange-500 px-2 py-1 rounded text-xs">قيد التطوير</span>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="project-card p-6 rounded-lg">
-                    <h3 class="text-xl font-bold mb-3 hover-orange cursor-pointer">نظام المستشفيات</h3>
-                    <p class="text-gray-300 mb-4">إدارة معلومات المرضى – HTML, CSS, PHP</p>
-                    <div class="flex items-center">
-                        <i class="fas fa-hospital text-orange-500 ml-2"></i>
-                        <span class="text-sm">Web Application</span>
+                    
+                    <div class="project-card-advanced p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-hotel text-orange-500 text-3xl ml-4 icon-3d"></i>
+                            <h3 class="text-xl font-bold hover-glow cursor-pointer">نظام إدارة الفنادق</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4 leading-relaxed">نظام متكامل لإدارة الحجوزات والغرف وخدمات الفندق باستخدام PHP</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-purple-500 px-2 py-1 rounded text-xs">PHP</span>
+                            <span class="bg-blue-500 px-2 py-1 rounded text-xs">MySQL</span>
+                            <span class="bg-green-500 px-2 py-1 rounded text-xs">Booking System</span>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="project-card p-6 rounded-lg">
-                    <h3 class="text-xl font-bold mb-3 hover-orange cursor-pointer">تطبيقات موبايل</h3>
-                    <p class="text-gray-300 mb-4">تطبيقات تعليمية وخدمية باستخدام Flutter بالذكاء الاصطناعي</p>
-                    <div class="flex items-center">
-                        <i class="fas fa-mobile-alt text-orange-500 ml-2"></i>
-                        <span class="text-sm">Flutter • AI</span>
+                    
+                    <div class="project-card-advanced p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-hospital text-orange-500 text-3xl ml-4 icon-3d"></i>
+                            <h3 class="text-xl font-bold hover-glow cursor-pointer">نظام المستشفيات</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4 leading-relaxed">نظام إدارة شامل لمعلومات المرضى والمواعيد والسجلات الطبية</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-red-500 px-2 py-1 rounded text-xs">HTML5</span>
+                            <span class="bg-blue-500 px-2 py-1 rounded text-xs">CSS3</span>
+                            <span class="bg-purple-500 px-2 py-1 rounded text-xs">PHP</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card-advanced p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-mobile-alt text-orange-500 text-3xl ml-4 icon-3d"></i>
+                            <h3 class="text-xl font-bold hover-glow cursor-pointer">تطبيقات موبايل ذكية</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4 leading-relaxed">تطبيقات تعليمية وخدمية متطورة باستخدام Flutter والذكاء الاصطناعي</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-cyan-500 px-2 py-1 rounded text-xs">Flutter</span>
+                            <span class="bg-green-500 px-2 py-1 rounded text-xs">AI Integration</span>
+                            <span class="bg-yellow-500 px-2 py-1 rounded text-xs">Cross Platform</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Education & Certifications Grid -->
-        <div class="grid lg:grid-cols-2 gap-8 mb-12">
-            <!-- Education -->
-            <section class="section-card rounded-2xl p-8">
-                <h2 class="text-3xl font-bold mb-6 text-gradient flex items-center">
-                    <i class="fas fa-graduation-cap ml-4 icon-hover"></i>
-                    المؤهلات التعليمية
-                </h2>
-                
-                <div class="space-y-6">
-                    <div class="timeline-item hover-orange cursor-pointer">
-                        <h3 class="text-xl font-bold">بكالوريوس تكنولوجيا المعلومات</h3>
-                        <p class="text-orange-400 font-semibold">جامعة صنعاء • 2022-2023</p>
-                    </div>
+        <!-- Education & Certifications -->
+        <section class="section-advanced" data-aos="fade-up">
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Education -->
+                <div class="glass-card rounded-3xl p-8 md:p-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gradient-advanced flex items-center amiri-font">
+                        <i class="fas fa-graduation-cap ml-4 icon-3d"></i>
+                        المؤهلات التعليمية
+                    </h2>
+                    <div class="section-divider"></div>
                     
-                    <div class="timeline-item hover-orange cursor-pointer">
-                        <h3 class="text-xl font-bold">دبلوم إدارة تقنية المعلومات</h3>
-                        <p class="text-orange-400 font-semibold">Alison • 2022-2023</p>
-                    </div>
-                    
-                    <div class="timeline-item hover-orange cursor-pointer">
-                        <h3 class="text-xl font-bold">الثانوية العامة</h3>
-                        <p class="text-orange-400 font-semibold">2018-2019</p>
+                    <div class="timeline-advanced">
+                        <div class="timeline-item-advanced hover-glow cursor-pointer">
+                            <h3 class="text-xl font-bold mb-2">بكالوريوس تكنولوجيا المعلومات</h3>
+                            <p class="text-orange-400 font-bold mb-2">جامعة صنعاء</p>
+                            <p class="text-sm opacity-80">2022-2023</p>
+                        </div>
+                        
+                        <div class="timeline-item-advanced hover-glow cursor-pointer">
+                            <h3 class="text-xl font-bold mb-2">دبلوم إدارة تقنية المعلومات</h3>
+                            <p class="text-orange-400 font-bold mb-2">Alison</p>
+                            <p class="text-sm opacity-80">2022-2023</p>
+                        </div>
+                        
+                        <div class="timeline-item-advanced hover-glow cursor-pointer">
+                            <h3 class="text-xl font-bold mb-2">الثانوية العامة</h3>
+                            <p class="text-orange-400 font-bold mb-2">اليمن</p>
+                            <p class="text-sm opacity-80">2018-2019</p>
+                        </div>
                     </div>
                 </div>
-            </section>
 
-            <!-- Certifications -->
-            <section class="section-card rounded-2xl p-8">
-                <h2 class="text-3xl font-bold mb-6 text-gradient flex items-center">
-                    <i class="fas fa-certificate ml-4 icon-hover"></i>
-                    الدورات والشهادات
-                </h2>
-                
-                <div class="space-y-4">
-                    <div class="hover-orange cursor-pointer flex items-center p-3 rounded-lg bg-white bg-opacity-5">
-                        <i class="fas fa-award text-orange-500 ml-3"></i>
-                        <span>دبلوم إدارة تقنية المعلومات – Alison</span>
-                    </div>
-                    <div class="hover-orange cursor-pointer flex items-center p-3 rounded-lg bg-white bg-opacity-5">
-                        <i class="fas fa-shield-alt text-orange-500 ml-3"></i>
-                        <span>مقدمة في الأمن السيبراني – Cisco</span>
-                    </div>
-                    <div class="hover-orange cursor-pointer flex items-center p-3 rounded-lg bg-white bg-opacity-5">
-                        <i class="fas fa-language text-orange-500 ml-3"></i>
-                        <span>دورة اللغة الإنجليزية – معهد Skills</span>
-                    </div>
-                    <div class="hover-orange cursor-pointer flex items-center p-3 rounded-lg bg-white bg-opacity-5">
-                        <i class="fas fa-computer text-orange-500 ml-3"></i>
-                        <span>الرخصة الدولية لقيادة الحاسوب (ICDL)</span>
-                    </div>
-                    <div class="hover-orange cursor-pointer flex items-center p-3 rounded-lg bg-white bg-opacity-5">
-                        <i class="fas fa-globe text-orange-500 ml-3"></i>
-                        <span>دورات متعددة عبر منصة إيفاد</span>
+                <!-- Certifications -->
+                <div class="glass-card rounded-3xl p-8 md:p-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gradient-advanced flex items-center amiri-font">
+                        <i class="fas fa-certificate ml-4 icon-3d"></i>
+                        الدورات والشهادات
+                    </h2>
+                    <div class="section-divider"></div>
+                    
+                    <div class="space-y-4">
+                        <div class="contact-item hover-glow cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fas fa-award text-orange-500 ml-3 icon-3d"></i>
+                                <span class="font-semibold">دبلوم إدارة تقنية المعلومات – Alison</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item hover-glow cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fas fa-shield-alt text-orange-500 ml-3 icon-3d"></i>
+                                <span class="font-semibold">مقدمة في الأمن السيبراني – Cisco</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item hover-glow cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fas fa-language text-orange-500 ml-3 icon-3d"></i>
+                                <span class="font-semibold">دورة اللغة الإنجليزية – معهد Skills</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item hover-glow cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fas fa-computer text-orange-500 ml-3 icon-3d"></i>
+                                <span class="font-semibold">الرخصة الدولية لقيادة الحاسوب (ICDL)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item hover-glow cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fas fa-globe text-orange-500 ml-3 icon-3d"></i>
+                                <span class="font-semibold">دورات متعددة عبر منصة إيفاد</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
         <!-- Languages -->
-        <section class="section-card rounded-2xl p-8 mb-12">
-            <h2 class="text-3xl font-bold mb-6 text-gradient flex items-center">
-                <i class="fas fa-language ml-4 icon-hover"></i>
-                اللغات
-            </h2>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="hover-orange cursor-pointer">
-                    <h3 class="text-2xl font-bold mb-2">العربية</h3>
-                    <p class="text-orange-400 mb-3">اللغة الأم</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 100%"></div>
-                    </div>
-                </div>
+        <section class="section-advanced" data-aos="fade-up">
+            <div class="glass-card rounded-3xl p-8 md:p-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-gradient-advanced flex items-center amiri-font">
+                    <i class="fas fa-language ml-6 icon-3d"></i>
+                    اللغات
+                </h2>
+                <div class="section-divider"></div>
                 
-                <div class="hover-orange cursor-pointer">
-                    <h3 class="text-2xl font-bold mb-2">الإنجليزية</h3>
-                    <p class="text-orange-400 mb-3">جيد جداً (قراءة، كتابة، محادثة)</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 85%"></div>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="hover-glow cursor-pointer">
+                        <h3 class="text-3xl font-bold mb-4 text-gradient-advanced">العربية</h3>
+                        <p class="text-orange-400 mb-4 text-lg font-semibold">اللغة الأم</p>
+                        <div class="skill-bar-advanced">
+                            <div class="skill-progress-advanced" data-width="100"></div>
+                        </div>
+                        <p class="text-sm mt-2 opacity-80">إتقان كامل في القراءة والكتابة والمحادثة</p>
+                    </div>
+                    
+                    <div class="hover-glow cursor-pointer">
+                        <h3 class="text-3xl font-bold mb-4 text-gradient-advanced">الإنجليزية</h3>
+                        <p class="text-orange-400 mb-4 text-lg font-semibold">جيد جداً</p>
+                        <div class="skill-bar-advanced">
+                            <div class="skill-progress-advanced" data-width="85"></div>
+                        </div>
+                        <p class="text-sm mt-2 opacity-80">قراءة، كتابة، ومحادثة بطلاقة جيدة</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Call to Action -->
-        <section class="text-center section-card rounded-2xl p-12">
-            <h2 class="text-4xl font-bold mb-6 text-gradient">
-                دعنا نعمل معاً
-            </h2>
-            <p class="text-xl mb-8 opacity-90">
-                وفي الأخير يسعدني ويشرفني أن أكون ضمن فريقكم
-            </p>
-            
-            <div class="flex justify-center space-x-6 space-x-reverse">
-                <a href="mailto:ashaqalshwy@gmail.com" class="contact-btn px-8 py-4 rounded-full font-bold text-lg flex items-center space-x-3 space-x-reverse">
-                    <i class="fas fa-envelope"></i>
-                    <span>تواصل معي</span>
-                </a>
-                <a href="tel:+967770530245" class="contact-btn px-8 py-4 rounded-full font-bold text-lg flex items-center space-x-3 space-x-reverse">
-                    <i class="fas fa-phone"></i>
-                    <span>اتصل الآن</span>
-                </a>
+        <!-- Final CTA -->
+        <section class="section-advanced" data-aos="fade-up">
+            <div class="glass-card rounded-3xl p-12 md:p-16 text-center">
+                <h2 class="text-5xl md:text-6xl font-bold mb-8 text-gradient-advanced amiri-font">
+                    دعنا نعمل معاً
+                </h2>
+                <div class="section-divider"></div>
+                <p class="text-2xl md:text-3xl mb-12 opacity-90 leading-relaxed">
+                    وفي الأخير يسعدني ويشرفني أن أكون ضمن فريقكم
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-8">
+                    <a href="mailto:ashaqalshwy@gmail.com" class="btn-professional px-12 py-6 rounded-full font-bold text-xl flex items-center justify-center space-x-4 space-x-reverse">
+                        <i class="fas fa-envelope text-2xl"></i>
+                        <span>تواصل معي الآن</span>
+                    </a>
+                    <a href="tel:+967770530245" class="btn-professional px-12 py-6 rounded-full font-bold text-xl flex items-center justify-center space-x-4 space-x-reverse">
+                        <i class="fas fa-phone text-2xl"></i>
+                        <span>اتصل مباشرة</span>
+                    </a>
+                </div>
+                
+                <div class="mt-12 flex justify-center space-x-8 space-x-reverse">
+                    <div class="text-center">
+                        <i class="fab fa-linkedin text-4xl mb-2 icon-3d hover-glow cursor-pointer"></i>
+                        <p class="text-sm">LinkedIn</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fab fa-github text-4xl mb-2 icon-3d hover-glow cursor-pointer"></i>
+                        <p class="text-sm">GitHub</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fab fa-twitter text-4xl mb-2 icon-3d hover-glow cursor-pointer"></i>
+                        <p class="text-sm">Twitter</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="text-center py-8 border-t border-white border-opacity-20">
-        <p class="opacity-70">© 2024 أسحاق شوقي الشويع - جميع الحقوق محفوظة</p>
+    <footer class="relative z-10 text-center py-12 border-t border-white border-opacity-20">
+        <div class="container mx-auto px-6">
+            <p class="text-lg opacity-70 mb-4">© 2024 أسحاق شوقي الشويع - جميع الحقوق محفوظة</p>
+            <p class="text-sm opacity-50">تم تصميم هذا الموقع باستخدام أحدث تقنيات الويب</p>
+        </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Animate skill bars on page load
-        window.addEventListener('load', () => {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            skillBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0%';
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 500);
-            });
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
         });
 
-        // Add smooth scrolling for any internal links
+        // Animate skill bars on scroll
+        const observerSkills = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBar = entry.target;
+                    const width = progressBar.getAttribute('data-width');
+                    progressBar.style.width = width + '%';
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.skill-progress-advanced').forEach(bar => {
+            bar.style.width = '0%';
+            observerSkills.observe(bar);
+        });
+
+        // Smooth scrolling for internal links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -551,17 +1029,83 @@
             });
         });
 
-        // Add intersection observer for animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
+        // Enhanced parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-element');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
             });
         });
 
-        document.querySelectorAll('.section-card').forEach(el => {
-            observer.observe(el);
+        // Dynamic particle creation
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 8 + 's';
+            particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            
+            document.querySelector('.fixed').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 8000);
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 2000);
+
+        // Advanced hover effects for project cards
+        document.querySelectorAll('.project-card-advanced').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) rotateY(5deg) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) rotateY(0) scale(1)';
+            });
+        });
+
+        // Enhanced typing effect for main title (optional)
+        const title = document.querySelector('.hero-title');
+        if (title) {
+            const text = title.textContent;
+            title.textContent = '';
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < text.length) {
+                    title.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+            
+            setTimeout(typeWriter, 1000);
+        }
+
+        // Add loading animation for images
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('load', function() {
+                this.style.opacity = '1';
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Dark mode detection and handling
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
         });
     </script>
 </body>
