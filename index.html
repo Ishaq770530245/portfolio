@@ -65,18 +65,19 @@
         
         /* Enhanced Glass Morphism Effects */
         .glass-card {
-            background: var(--glass-bg);
+            background: var(--primary-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 
                 0 8px 32px rgba(0, 0, 0, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            color: white;
         }
         
         .glass-card:hover {
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 102, 0, 0.1);
             transform: translateY(-8px) scale(1.02);
             box-shadow: 
                 0 20px 60px rgba(0, 0, 0, 0.4),
@@ -86,16 +87,15 @@
         
         /* Professional Service Card */
         .service-card {
-            background: linear-gradient(135deg, 
-                rgba(255, 102, 0, 0.1) 0%, 
-                rgba(255, 136, 51, 0.08) 50%, 
-                rgba(255, 170, 51, 0.05) 100%);
+            background: var(--primary-bg);
             backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 102, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: 25px;
             position: relative;
             overflow: hidden;
             transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            color: white;
+            cursor: pointer;
         }
         
         .service-card::before {
@@ -111,27 +111,27 @@
             animation: gradientFlow 3s ease-in-out infinite;
         }
         
-        .service-card:hover {
-            transform: translateY(-12px) scale(1.03);
+        .service-card:hover, .service-card.clicked {
+            transform: translateY(-12px) scale(1.05);
+            background: var(--orange-primary);
             box-shadow: 
                 0 25px 60px rgba(255, 102, 0, 0.4),
                 0 0 40px rgba(255, 102, 0, 0.3),
                 inset 0 2px 10px rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 102, 0, 0.6);
+            border-color: rgba(255, 255, 255, 0.6);
         }
         
         /* Featured Project Card */
         .featured-project-card {
-            background: linear-gradient(135deg, 
-                rgba(255, 102, 0, 0.1) 0%, 
-                rgba(255, 136, 51, 0.08) 50%, 
-                rgba(255, 170, 51, 0.05) 100%);
+            background: var(--primary-bg);
             backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 102, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: 25px;
             position: relative;
             overflow: hidden;
             transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            color: white;
+            cursor: pointer;
         }
         
         .featured-project-card::before {
@@ -147,13 +147,14 @@
             animation: gradientFlow 3s ease-in-out infinite;
         }
         
-        .featured-project-card:hover {
-            transform: translateY(-15px) scale(1.03);
+        .featured-project-card:hover, .featured-project-card.clicked {
+            transform: translateY(-15px) scale(1.05);
+            background: var(--orange-primary);
             box-shadow: 
                 0 30px 70px rgba(255, 102, 0, 0.4),
                 0 0 50px rgba(255, 102, 0, 0.3),
                 inset 0 2px 10px rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 102, 0, 0.6);
+            border-color: rgba(255, 255, 255, 0.6);
         }
         
         @keyframes gradientFlow {
@@ -173,6 +174,8 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            background: var(--primary-bg);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
         
         .lang-icon::before {
@@ -183,9 +186,14 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(45deg, var(--orange-primary), var(--orange-secondary));
-            opacity: 0.8;
+            opacity: 0;
             border-radius: 50%;
             z-index: -1;
+            transition: opacity 0.4s ease;
+        }
+        
+        .lang-icon:hover::before {
+            opacity: 0.8;
         }
         
         .lang-icon:hover {
@@ -481,13 +489,15 @@
         
         /* Enhanced Project Cards */
         .project-card-advanced {
-            background: var(--glass-bg);
+            background: var(--primary-bg);
             backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 20px;
             overflow: hidden;
             position: relative;
             transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            color: white;
+            cursor: pointer;
         }
         
         .project-card-advanced::before {
@@ -500,8 +510,9 @@
             background: linear-gradient(90deg, var(--orange-primary), var(--orange-secondary), var(--orange-light));
         }
         
-        .project-card-advanced:hover {
-            transform: translateY(-10px) rotateY(5deg);
+        .project-card-advanced:hover, .project-card-advanced.clicked {
+            transform: translateY(-10px) rotateY(5deg) scale(1.05);
+            background: var(--orange-primary);
             box-shadow: 
                 0 25px 50px rgba(0, 0, 0, 0.4),
                 0 0 30px rgba(255, 102, 0, 0.3);
@@ -511,7 +522,7 @@
         .icon-3d {
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-            color: var(--orange-primary);
+            color: #fff;
         }
         
         .icon-3d:hover {
@@ -540,10 +551,11 @@
             position: relative;
             margin-bottom: 2rem;
             padding: 1.5rem;
-            background: var(--glass-bg);
+            background: var(--primary-bg);
             backdrop-filter: blur(10px);
             border-radius: 15px;
             border-right: 3px solid var(--orange-primary);
+            color: white;
         }
         
         .timeline-item-advanced::before {
@@ -560,14 +572,15 @@
         
         /* Contact Items */
         .contact-item {
-            background: var(--glass-bg);
+            background: var(--primary-bg);
             backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 15px;
             padding: 1.5rem;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            color: white;
         }
         
         .contact-item::before {
@@ -694,6 +707,17 @@
                 transform: translateY(-6px) scale(1.02);
             }
         }
+        
+        /* Click Animation */
+        @keyframes clickPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1.05); }
+        }
+        
+        .card-clicked {
+            animation: clickPulse 0.3s ease-in-out;
+        }
     </style>
 </head>
 <body class="hero-background">
@@ -765,19 +789,19 @@
             <!-- Contact Info Grid -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6" data-aos="fade-up" data-aos-delay="600">
                 <div class="contact-item text-center hover-glow cursor-pointer">
-                    <i class="fas fa-phone icon-3d text-3xl mb-3"></i>
+                    <i class="fas fa-phone text-2xl mb-3"></i>
                     <p class="text-sm font-semibold">967770530245+</p>
                 </div>
                 <div class="contact-item text-center hover-glow cursor-pointer">
-                    <i class="fab fa-whatsapp icon-3d text-3xl mb-3"></i>
+                    <i class="fab fa-whatsapp text-2xl mb-3"></i>
                     <p class="text-sm font-semibold">967780887739+</p>
                 </div>
                 <div class="contact-item text-center hover-glow cursor-pointer">
-                    <i class="fas fa-envelope icon-3d text-3xl mb-3"></i>
+                    <i class="fas fa-envelope text-2xl mb-3"></i>
                     <p class="text-sm font-semibold">ashaqalshwy@gmail.com</p>
                 </div>
                 <div class="contact-item text-center hover-glow cursor-pointer">
-                    <i class="fas fa-map-marker-alt icon-3d text-3xl mb-3"></i>
+                    <i class="fas fa-map-marker-alt text-2xl mb-3"></i>
                     <p class="text-sm font-semibold">اليمن - صنعاء</p>
                 </div>
             </div>
@@ -806,8 +830,8 @@
                         <div class="lang-icon">
                             <i class="fab fa-php text-white"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">PHP</h3>
-                        <p class="text-sm opacity-80">Laravel, CodeIgniter, Symfony</p>
+                        <h3 class="text-lg font-bold text-white mb-2">PHP</h3>
+                        <p class="text-sm opacity-80">Laravel, CodeIgniter</p>
                     </div>
 
                     <!-- JavaScript -->
@@ -815,8 +839,8 @@
                         <div class="lang-icon">
                             <i class="fab fa-js-square text-white"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">JavaScript</h3>
-                        <p class="text-sm opacity-80">React, Node.js, Vue.js</p>
+                        <h3 class="text-lg font-bold text-white mb-2">JavaScript</h3>
+                        <p class="text-sm opacity-80">React, Node.js</p>
                     </div>
 
                     <!-- Python -->
@@ -824,8 +848,8 @@
                         <div class="lang-icon">
                             <i class="fab fa-python text-white"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">Python</h3>
-                        <p class="text-sm opacity-80">Django, Flask, AI/ML</p>
+                        <h3 class="text-lg font-bold text-white mb-2">Python</h3>
+                        <p class="text-sm opacity-80">Django, AI/ML</p>
                     </div>
 
                     <!-- Java -->
@@ -833,8 +857,8 @@
                         <div class="lang-icon">
                             <i class="fab fa-java text-white"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">Java</h3>
-                        <p class="text-sm opacity-80">Spring Boot, Android</p>
+                        <h3 class="text-lg font-bold text-white mb-2">Java</h3>
+                        <p class="text-sm opacity-80">Spring Boot</p>
                     </div>
 
                     <!-- C# -->
@@ -842,8 +866,8 @@
                         <div class="lang-icon">
                             <i class="fas fa-hashtag text-white"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">C#</h3>
-                        <p class="text-sm opacity-80">ASP.NET, WPF, Xamarin</p>
+                        <h3 class="text-lg font-bold text-white mb-2">C#</h3>
+                        <p class="text-sm opacity-80">ASP.NET</p>
                     </div>
 
                     <!-- Flutter -->
@@ -851,8 +875,8 @@
                         <div class="lang-icon">
                             <i class="fas fa-mobile-alt text-white"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">Flutter</h3>
-                        <p class="text-sm opacity-80">Cross-platform Apps</p>
+                        <h3 class="text-lg font-bold text-white mb-2">Flutter</h3>
+                        <p class="text-sm opacity-80">Cross-platform</p>
                     </div>
 
                     <!-- React -->
@@ -860,8 +884,8 @@
                         <div class="lang-icon">
                             <i class="fab fa-react text-white"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">React</h3>
-                        <p class="text-sm opacity-80">Modern UI Components</p>
+                        <h3 class="text-lg font-bold text-white mb-2">React</h3>
+                        <p class="text-sm opacity-80">Modern UI</p>
                     </div>
 
                     <!-- Angular -->
@@ -869,8 +893,8 @@
                         <div class="lang-icon">
                             <i class="fab fa-angular text-white"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">Angular</h3>
-                        <p class="text-sm opacity-80">Enterprise Applications</p>
+                        <h3 class="text-lg font-bold text-white mb-2">Angular</h3>
+                        <p class="text-sm opacity-80">Enterprise Apps</p>
                     </div>
 
                     <!-- WordPress -->
@@ -878,8 +902,8 @@
                         <div class="lang-icon">
                             <i class="fab fa-wordpress text-white"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">WordPress</h3>
-                        <p class="text-sm opacity-80">Custom Themes & Plugins</p>
+                        <h3 class="text-lg font-bold text-white mb-2">WordPress</h3>
+                        <p class="text-sm opacity-80">Custom Themes</p>
                     </div>
 
                     <!-- Database -->
@@ -887,8 +911,8 @@
                         <div class="lang-icon">
                             <i class="fas fa-database text-white"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">Databases</h3>
-                        <p class="text-sm opacity-80">MySQL, SQL Server, Oracle</p>
+                        <h3 class="text-lg font-bold text-white mb-2">Databases</h3>
+                        <p class="text-sm opacity-80">MySQL, SQL Server</p>
                     </div>
 
                     <!-- AI/ML -->
@@ -896,7 +920,7 @@
                         <div class="lang-icon">
                             <i class="fas fa-robot text-white"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">AI & ML</h3>
+                        <h3 class="text-lg font-bold text-white mb-2">AI & ML</h3>
                         <p class="text-sm opacity-80">Smart Solutions</p>
                     </div>
 
@@ -905,8 +929,8 @@
                         <div class="lang-icon">
                             <i class="fas fa-server text-white"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">DevOps</h3>
-                        <p class="text-sm opacity-80">CI/CD, Docker, AWS</p>
+                        <h3 class="text-lg font-bold text-white mb-2">DevOps</h3>
+                        <p class="text-sm opacity-80">CI/CD, Docker</p>
                     </div>
                 </div>
 
@@ -1017,98 +1041,70 @@
                 <!-- المشاريع المميزة -->
                 <div class="grid lg:grid-cols-2 gap-12 mb-16">
                     
-                    <!-- مشروع تطبيق الصم والبكم -->
+                    <!-- مشروع تطبيق الصم والبكم - مبسط -->
                     <div class="featured-project-card p-8" data-aos="fade-right" data-aos-delay="200">
                         <div class="flex items-center mb-6">
-                            <div class="relative">
-                                <i class="fas fa-sign-language text-6xl ml-6 text-green-400"></i>
-                                <div class="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-ping"></div>
-                                <div class="absolute -bottom-1 -left-1 text-yellow-400 text-2xl animate-bounce">✨</div>
-                            </div>
+                            <i class="fas fa-sign-language text-5xl ml-4 text-white"></i>
                             <div>
-                                <h3 class="text-3xl font-bold text-gradient-advanced mb-2">🤝 تطبيق لنتحدث بالإشارة</h3>
+                                <h3 class="text-2xl font-bold text-white mb-2">🤝 تطبيق لنتحدث بالإشارة</h3>
                                 <div class="status-badge"> مشروع ثوري ومبتكر</div>
                             </div>
                         </div>
                         
-                        <p class="text-lg mb-6 leading-relaxed text-gray-200">
-                            💡 <span class="font-bold text-green-400">تطبيق تفاعلي مبتكر</span> يكسر حاجز التواصل ويحقق الإدماج الاجتماعي! يستخدم أحدث تقنيات الذكاء الاصطناعي والرؤية الحاسوبية المتطورة لتحويل الأصوات والنصوص إلى <span class="font-bold text-purple-400">إشارات مرئية واضحة ومفهومة</span>، مما يمكّن الصم والبكم من التواصل بسهولة وفعالية مع العالم المحيط.
+                        <p class="text-lg mb-6 leading-relaxed text-white">
+                            تطبيق تفاعلي مبتكر يكسر حاجز التواصل! يستخدم الذكاء الاصطناعي لتحويل الأصوات والنصوص إلى إشارات مرئية واضحة.
                         </p>
                         
                         <div class="mb-6">
-                            <h4 class="text-lg font-bold text-green-300 mb-4 flex items-center">
+                            <h4 class="text-lg font-bold text-white mb-4 flex items-center">
                                 <i class="fas fa-magic ml-2"></i>
-                                ✨ المميزات الثورية:
+                                المميزات الرئيسية:
                             </h4>
-                            <ul class="feature-list text-gray-300 space-y-3">
-                                <li> تحويل الصوت إلى إشارات فورية بدقة عالية</li>
-                                <li> ترجمة النصوص إلى لغة الإشارة التفاعلية</li>
-                                <li>نظام تعلم تفاعلي ذكي للغة الإشارة</li>
-                                <li>واجهة سهلة ومناسبة لجميع الأعمار</li>
-                                <li> دعم متعدد اللغات والثقافات</li>
-                                <li> ذكاء اصطناعي متطور للتعرف على الإيماءات</li>
+                            <ul class="feature-list text-white space-y-2 text-sm">
+                                <li>تحويل الصوت إلى إشارات فورية</li>
+                                <li>ترجمة النصوص إلى لغة الإشارة</li>
+                                <li>نظام تعلم تفاعلي ذكي</li>
+                                <li>دعم متعدد اللغات</li>
                             </ul>
                         </div>
                         
-                        <div class="flex flex-wrap gap-3 mb-6">
-                            <span class="bg-gradient-to-r from-green-500 to-emerald-600 px-4 py-2 rounded-full text-sm font-bold shadow-lg hover:scale-105 transition-transform cursor-pointer">🤖 AI المتطور</span>
-                            <span class="bg-gradient-to-r from-purple-500 to-violet-600 px-4 py-2 rounded-full text-sm font-bold shadow-lg hover:scale-105 transition-transform cursor-pointer">👁️ رؤية حاسوبية</span>
-                            <span class="bg-gradient-to-r from-pink-500 to-rose-600 px-4 py-2 rounded-full text-sm font-bold shadow-lg hover:scale-105 transition-transform cursor-pointer">📱 Flutter متقدم</span>
-                            <span class="bg-gradient-to-r from-blue-500 to-cyan-600 px-4 py-2 rounded-full text-sm font-bold shadow-lg hover:scale-105 transition-transform cursor-pointer">🌟 مبتكر عالمياً</span>
-                            <span class="bg-gradient-to-r from-yellow-500 to-orange-600 px-4 py-2 rounded-full text-sm font-bold shadow-lg hover:scale-105 transition-transform cursor-pointer">♿ إدماج اجتماعي</span>
-                        </div>
-                        
                         <div class="text-center">
-                            <div class="inline-block bg-gradient-to-r from-green-400 via-purple-500 to-pink-500 text-white px-6 py-3 rounded-full font-bold text-lg shadow-2xl transform hover:scale-110 transition-all duration-300 animate-pulse">
+                            <div class="inline-block bg-gradient-to-r from-green-400 via-purple-500 to-pink-500 text-white px-6 py-3 rounded-full font-bold text-lg shadow-2xl">
                                 تم التطوير 
                             </div>
                         </div>
                     </div>
 
-                    <!-- مشروع Royal Elegance -->
+                    <!-- مشروع Royal Elegance - مبسط -->
                     <div class="featured-project-card p-8" data-aos="fade-left" data-aos-delay="400">
                         <div class="flex items-center mb-6">
-                            <div class="relative">
-                                <i class="fas fa-crown text-6xl ml-6 text-yellow-400"></i>
-                                <div class="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-yellow-400 to-pink-500 rounded-full animate-ping"></div>
-                                <div class="absolute -bottom-1 -left-1 text-pink-400 text-2xl animate-bounce">💎</div>
-                            </div>
+                            <i class="fas fa-crown text-5xl ml-4 text-white"></i>
                             <div>
-                                <h3 class="text-3xl font-bold text-gradient-advanced mb-2">👑 صالون Royal Elegance</h3>
+                                <h3 class="text-2xl font-bold text-white mb-2">👑 صالون Royal Elegance</h3>
                                 <div class="status-badge bg-gradient-to-r from-yellow-500 to-pink-500">💎 فخامة ملكية</div>
                             </div>
                         </div>
                         
-                        <p class="text-lg mb-6 leading-relaxed text-gray-200">
-                            🏆 موقع إلكتروني <span class="font-bold text-yellow-400">فاخر ومتطور</span> تم تصميمه وتطويره بعناية فائقة باستخدام ووردبريس المتقدم، يعكس <span class="font-bold text-pink-400">الأناقة الملكية والفخامة الحقيقية</span>. يقدم خدمات التجميل والعناية بأعلى معايير الجودة العالمية، مع استخدام <span class="font-bold text-purple-400">منتجات عالية الجودة معتمدة دولياً</span> ومعايير تدريب متخصصة.
+                        <p class="text-lg mb-6 leading-relaxed text-white">
+                            موقع إلكتروني فاخر تم تطويره بووردبريس، يعكس الأناقة الملكية ويقدم خدمات التجميل بأعلى معايير الجودة العالمية.
                         </p>
                         
                         <div class="mb-6">
-                            <h4 class="text-lg font-bold text-yellow-300 mb-4 flex items-center">
+                            <h4 class="text-lg font-bold text-white mb-4 flex items-center">
                                 <i class="fas fa-star ml-2"></i>
-                                🌟 خدماتنا الملكية المميزة:
+                                خدماتنا الملكية:
                             </h4>
-                            <ul class="feature-list text-gray-300 space-y-3">
-                                <li>خدمات مكياج احترافية بأيدي خبراء</li>
-                                <li> عناية فاخرة بالأظافر والأيدي</li>
-                                <li> تصفيف وعلاج الشعر بأحدث التقنيات</li>
-                                <li> منتجات عالمية معتمدة وعالية الجودة</li>
-                                <li> شهادات دولية وتدريب متخصص</li>
-                                <li> تجربة عملاء استثنائية ومميزة</li>
+                            <ul class="feature-list text-white space-y-2 text-sm">
+                                <li>خدمات مكياج احترافية</li>
+                                <li>عناية فاخرة بالأظافر</li>
+                                <li>تصفيف وعلاج الشعر</li>
+                                <li>منتجات عالمية معتمدة</li>
                             </ul>
                         </div>
                         
-                        <div class="flex flex-wrap gap-3 mb-6">
-                            <span class="bg-gradient-to-r from-blue-500 to-blue-600 px-4 py-2 rounded-full text-sm font-bold shadow-lg hover:scale-105 transition-transform cursor-pointer">🌐 WordPress متقدم</span>
-                            <span class="bg-gradient-to-r from-yellow-500 to-yellow-600 px-4 py-2 rounded-full text-sm font-bold shadow-lg hover:scale-105 transition-transform cursor-pointer">🛒 WooCommerce</span>
-                            <span class="bg-gradient-to-r from-pink-500 to-pink-600 px-4 py-2 rounded-full text-sm font-bold shadow-lg hover:scale-105 transition-transform cursor-pointer">👑 Royal Elegance</span>
-                            <span class="bg-gradient-to-r from-purple-500 to-purple-600 px-4 py-2 rounded-full text-sm font-bold shadow-lg hover:scale-105 transition-transform cursor-pointer">💎 فخامة عالمية</span>
-                            <span class="bg-gradient-to-r from-green-500 to-green-600 px-4 py-2 rounded-full text-sm font-bold shadow-lg hover:scale-105 transition-transform cursor-pointer">🏆 جودة معتمدة</span>
-                        </div>
-                        
                         <div class="text-center">
-                            <a href="https://www.royalalegance.net/" target="_blank" class="inline-block bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-2xl transform hover:scale-110 transition-all duration-300 hover:shadow-yellow-400/50">
-                                👁️ زيارة القصر الملكي الرقمي
+                            <a href="https://www.royalalegance.net/" target="_blank" class="inline-block bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-2xl hover:scale-110 transition-all">
+                                👁️ زيارة الموقع
                             </a>
                         </div>
                     </div>
@@ -1119,41 +1115,38 @@
                     <!-- مشروع 1 -->
                     <div class="project-card-advanced p-6">
                         <div class="flex items-center mb-4">
-                            <i class="fas fa-play-circle icon-3d text-3xl ml-4"></i>
+                            <i class="fas fa-play-circle text-3xl ml-4"></i>
                             <h3 class="text-xl font-bold hover-glow cursor-pointer">منصة يمن فليكس</h3>
                         </div>
-                        <p class="text-gray-300 mb-4 leading-relaxed">نظام مشاهدة فيديوهات متطور باستخدام Laravel وMySQL مع واجهة مستخدم احترافية</p>
+                        <p class="text-gray-300 mb-4 leading-relaxed">نظام مشاهدة فيديوهات متطور باستخدام Laravel وMySQL</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-red-500 px-2 py-1 rounded text-xs">Laravel</span>
                             <span class="bg-blue-500 px-2 py-1 rounded text-xs">MySQL</span>
-                            <span class="bg-green-500 px-2 py-1 rounded text-xs">Streaming</span>
                         </div>
                     </div>
 
                     <!-- مشروع 2 -->
                     <div class="project-card-advanced p-6">
                         <div class="flex items-center mb-4">
-                            <i class="fas fa-briefcase icon-3d text-3xl ml-4"></i>
+                            <i class="fas fa-briefcase text-3xl ml-4"></i>
                             <h3 class="text-xl font-bold hover-glow cursor-pointer">منصة توظيف إلكتروني</h3>
                         </div>
-                        <p class="text-gray-300 mb-4 leading-relaxed">منصة متكاملة للتوظيف باستخدام Laravel وLivewire مع خصائص تفاعلية متقدمة</p>
+                        <p class="text-gray-300 mb-4 leading-relaxed">منصة متكاملة للتوظيف باستخدام Laravel وLivewire</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-red-500 px-2 py-1 rounded text-xs">Laravel</span>
                             <span class="bg-purple-500 px-2 py-1 rounded text-xs">Livewire</span>
-                            <span class="bg-yellow-500 px-2 py-1 rounded text-xs">AJAX</span>
                         </div>
                     </div>
 
                     <!-- مشروع 3 -->
                     <div class="project-card-advanced p-6">
                         <div class="flex items-center mb-4">
-                            <i class="fas fa-graduation-cap icon-3d text-3xl ml-4"></i>
+                            <i class="fas fa-graduation-cap text-3xl ml-4"></i>
                             <h3 class="text-xl font-bold hover-glow cursor-pointer">منبر العلم</h3>
                         </div>
-                        <p class="text-gray-300 mb-4 leading-relaxed">منصة تعليمية تفاعلية مع نظام إدارة محتوى متطور (قيد الإنجاز)</p>
+                        <p class="text-gray-300 mb-4 leading-relaxed">منصة تعليمية تفاعلية مع نظام إدارة محتوى متطور</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-blue-500 px-2 py-1 rounded text-xs">React</span>
-                            <span class="bg-green-500 px-2 py-1 rounded text-xs">Node.js</span>
                             <span class="bg-orange-500 px-2 py-1 rounded text-xs">قيد التطوير</span>
                         </div>
                     </div>
@@ -1161,27 +1154,25 @@
                     <!-- مشروع 4 -->
                     <div class="project-card-advanced p-6">
                         <div class="flex items-center mb-4">
-                            <i class="fas fa-hotel icon-3d text-3xl ml-4"></i>
+                            <i class="fas fa-hotel text-3xl ml-4"></i>
                             <h3 class="text-xl font-bold hover-glow cursor-pointer">نظام إدارة الفنادق</h3>
                         </div>
-                        <p class="text-gray-300 mb-4 leading-relaxed">نظام متكامل لإدارة الحجوزات والغرف وخدمات الفندق باستخدام PHP</p>
+                        <p class="text-gray-300 mb-4 leading-relaxed">نظام متكامل لإدارة الحجوزات والغرف باستخدام PHP</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-purple-500 px-2 py-1 rounded text-xs">PHP</span>
                             <span class="bg-blue-500 px-2 py-1 rounded text-xs">MySQL</span>
-                            <span class="bg-green-500 px-2 py-1 rounded text-xs">Booking System</span>
                         </div>
                     </div>
 
                     <!-- مشروع 5 -->
                     <div class="project-card-advanced p-6">
                         <div class="flex items-center mb-4">
-                            <i class="fas fa-hospital icon-3d text-3xl ml-4"></i>
+                            <i class="fas fa-hospital text-3xl ml-4"></i>
                             <h3 class="text-xl font-bold hover-glow cursor-pointer">نظام المستشفيات</h3>
                         </div>
-                        <p class="text-gray-300 mb-4 leading-relaxed">نظام إدارة شامل لمعلومات المرضى والمواعيد والسجلات الطبية</p>
+                        <p class="text-gray-300 mb-4 leading-relaxed">نظام إدارة شامل لمعلومات المرضى والمواعيد الطبية</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-red-500 px-2 py-1 rounded text-xs">HTML5</span>
-                            <span class="bg-blue-500 px-2 py-1 rounded text-xs">CSS3</span>
                             <span class="bg-purple-500 px-2 py-1 rounded text-xs">PHP</span>
                         </div>
                     </div>
@@ -1189,14 +1180,13 @@
                     <!-- مشروع 6 -->
                     <div class="project-card-advanced p-6">
                         <div class="flex items-center mb-4">
-                            <i class="fas fa-mobile-alt icon-3d text-3xl ml-4"></i>
+                            <i class="fas fa-mobile-alt text-3xl ml-4"></i>
                             <h3 class="text-xl font-bold hover-glow cursor-pointer">تطبيقات موبايل ذكية</h3>
                         </div>
-                        <p class="text-gray-300 mb-4 leading-relaxed">تطبيقات تعليمية وخدمية متطورة باستخدام Flutter والذكاء الاصطناعي</p>
+                        <p class="text-gray-300 mb-4 leading-relaxed">تطبيقات تعليمية وخدمية متطورة باستخدام Flutter</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-cyan-500 px-2 py-1 rounded text-xs">Flutter</span>
                             <span class="bg-green-500 px-2 py-1 rounded text-xs">AI Integration</span>
-                            <span class="bg-yellow-500 px-2 py-1 rounded text-xs">Cross Platform</span>
                         </div>
                     </div>
                 </div>
@@ -1205,7 +1195,7 @@
                 <div class="text-center mt-16 p-8 bg-gradient-to-r from-orange-900/20 to-purple-900/20 rounded-3xl border border-orange-500/30">
                     <h3 class="text-3xl font-bold text-gradient-advanced mb-4">🌟 التزامنا بالتميز</h3>
                     <p class="text-xl text-gray-200 leading-relaxed">
-                        نحرص دائمًا على تقديم <span class="text-gradient-advanced font-bold">أفضل الخدمات البرمجية</span> بإبداع وثقة، وننفذ مشاريعنا بمعايير عالية الجودة وتفاصيل دقيقة، ونجعل التصميم أكثر إبداعاً وتميزاً وتفوقاً عالمياً ومتحركاً.
+                        نحرص دائمًا على تقديم <span class="text-gradient-advanced font-bold">أفضل الخدمات البرمجية</span> بإبداع وثقة، وننفذ مشاريعنا بمعايير عالية الجودة وتفاصيل دقيقة.
                     </p>
                 </div>
             </div>
@@ -1729,22 +1719,44 @@
         // Create particles periodically
         setInterval(createParticle, 2000);
 
-        // Enhanced hover effects for project cards
-        document.querySelectorAll('.project-card-advanced, .featured-project-card, .service-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                if (this.classList.contains('featured-project-card')) {
-                    this.style.transform = 'translateY(-15px) scale(1.03)';
-                } else if (this.classList.contains('service-card')) {
-                    this.style.transform = 'translateY(-12px) scale(1.03)';
-                } else {
-                    this.style.transform = 'translateY(-10px) rotateY(5deg) scale(1.02)';
-                }
+        // Click animations for cards
+        function addClickAnimation(selector) {
+            document.querySelectorAll(selector).forEach(card => {
+                card.addEventListener('click', function() {
+                    // Add clicked class for styling
+                    this.classList.add('clicked');
+                    this.classList.add('card-clicked');
+                    
+                    // Remove clicked class after animation
+                    setTimeout(() => {
+                        this.classList.remove('clicked');
+                        this.classList.remove('card-clicked');
+                    }, 300);
+                });
+                
+                // Enhanced hover effects
+                card.addEventListener('mouseenter', function() {
+                    if (this.classList.contains('featured-project-card')) {
+                        this.style.transform = 'translateY(-15px) scale(1.03)';
+                    } else if (this.classList.contains('service-card')) {
+                        this.style.transform = 'translateY(-12px) scale(1.03)';
+                    } else {
+                        this.style.transform = 'translateY(-10px) rotateY(5deg) scale(1.02)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('clicked')) {
+                        this.style.transform = 'translateY(0) rotateY(0) scale(1)';
+                    }
+                });
             });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) rotateY(0) scale(1)';
-            });
-        });
+        }
+
+        // Add click animations to all cards
+        addClickAnimation('.project-card-advanced');
+        addClickAnimation('.featured-project-card');
+        addClickAnimation('.service-card');
 
         // Dark mode detection and handling
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -1805,16 +1817,6 @@
 
         document.addEventListener('mousedown', function() {
             document.body.classList.remove('keyboard-navigation');
-        });
-
-        // Service cards special animations
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('click', function() {
-                this.style.animation = 'pulse 0.6s ease-in-out';
-                setTimeout(() => {
-                    this.style.animation = '';
-                }, 600);
-            });
         });
     </script>
 </body>
