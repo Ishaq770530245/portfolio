@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أسحاق شوقي  - مهندس تكنولوجيا المعلومات</title>
+    <title>أسحاق شوقي - مهندس تكنولوجيا المعلومات</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
@@ -84,6 +84,42 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
         
+        /* Professional Service Card */
+        .service-card {
+            background: linear-gradient(135deg, 
+                rgba(255, 102, 0, 0.1) 0%, 
+                rgba(255, 136, 51, 0.08) 50%, 
+                rgba(255, 170, 51, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 102, 0, 0.3);
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                #ff6600, #ff8833, #ffaa33, #ff8833, #ff6600);
+            background-size: 200% 100%;
+            animation: gradientFlow 3s ease-in-out infinite;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 
+                0 25px 60px rgba(255, 102, 0, 0.4),
+                0 0 40px rgba(255, 102, 0, 0.3),
+                inset 0 2px 10px rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 102, 0, 0.6);
+        }
+        
         /* Featured Project Card */
         .featured-project-card {
             background: linear-gradient(135deg, 
@@ -123,6 +159,57 @@
         @keyframes gradientFlow {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
+        }
+        
+        /* Programming Language Icons */
+        .lang-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .lang-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--orange-primary), var(--orange-secondary));
+            opacity: 0.8;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .lang-icon:hover {
+            transform: scale(1.2) rotateY(15deg);
+            box-shadow: 0 10px 30px rgba(255, 102, 0, 0.5);
+        }
+        
+        .lang-icon i {
+            color: white;
+            font-size: 2rem;
+            z-index: 1;
+        }
+        
+        /* Network Icons Animation */
+        .network-icon {
+            color: var(--orange-primary);
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+        
+        .network-icon:hover {
+            transform: scale(1.3) rotate(10deg);
+            color: var(--orange-light);
+            filter: drop-shadow(0 8px 16px rgba(255, 102, 0, 0.6));
         }
         
         /* Particle Animation */
@@ -257,387 +344,6 @@
             }
         }
         
-        /* Neon Lines */
-        .neon-line {
-            position: absolute;
-            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
-            animation: neonPulse 4s ease-in-out infinite;
-        }
-        
-        .neon-line.horizontal {
-            width: 200px;
-            height: 2px;
-            animation: neonSlideH 6s linear infinite;
-        }
-        
-        .neon-line.vertical {
-            width: 2px;
-            height: 200px;
-            background: linear-gradient(180deg, transparent, var(--neon-purple), transparent);
-            animation: neonSlideV 8s linear infinite;
-        }
-        
-        .neon-line.diagonal {
-            width: 150px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
-            transform: rotate(45deg);
-            animation: neonRotate 10s linear infinite;
-        }
-        
-        @keyframes neonSlideH {
-            0% { transform: translateX(-100px); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateX(calc(100vw + 100px)); opacity: 0; }
-        }
-        
-        @keyframes neonSlideV {
-            0% { transform: translateY(-100px); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(calc(100vh + 100px)); opacity: 0; }
-        }
-        
-        @keyframes neonRotate {
-            0% { transform: rotate(45deg) scale(1); opacity: 0.5; }
-            50% { transform: rotate(225deg) scale(1.2); opacity: 1; }
-            100% { transform: rotate(405deg) scale(1); opacity: 0.5; }
-        }
-        
-        /* Animated Waves */
-        .wave-container {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 15vh;
-            overflow: hidden;
-        }
-        
-        .waves {
-            position: relative;
-            width: 100%;
-            height: 15vh;
-            margin-bottom: -7px;
-            min-height: 100px;
-            max-height: 150px;
-        }
-        
-        .wave-path {
-            fill: rgba(0, 247, 255, 0.1);
-            animation: waveAnimation 4s ease-in-out infinite;
-        }
-        
-        @keyframes waveAnimation {
-            0%, 100% {
-                d: path("M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z");
-            }
-            50% {
-                d: path("M985.66,62.83C906.67,42,823.78,1,743.84,24.19c-82.26,17.34-168.06,46.33-250.45,20.39-57.84,-11.73-114,1.07-172,21.86A600.21,600.21,0,0,1,0,47.35V120H1200V75.8C1132.19,98.92,1055.71,81.31,985.66,62.83Z");
-            }
-        }
-        
-        /* DNA Helix Animation */
-        .dna-helix {
-            position: absolute;
-            top: 20%;
-            right: 10%;
-            width: 20px;
-            height: 200px;
-        }
-        
-        .dna-strand {
-            position: absolute;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--neon-blue), var(--neon-purple));
-            animation: dnaRotate 4s linear infinite;
-            transform-origin: 50% 50%;
-        }
-        
-        .dna-strand:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-        
-        @keyframes dnaRotate {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
-        }
-        
-        /* Matrix Rain Effect */
-        .matrix-rain {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        .matrix-column {
-            position: absolute;
-            top: -100%;
-            width: 2px;
-            height: 100px;
-            background: linear-gradient(180deg, transparent, var(--neon-green), transparent);
-            animation: matrixFall 8s linear infinite;
-        }
-        
-        @keyframes matrixFall {
-            0% { 
-                transform: translateY(-100px);
-                opacity: 0;
-            }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { 
-                transform: translateY(calc(100vh + 100px));
-                opacity: 0;
-            }
-        }
-        
-        /* Circuit Board Animation */
-        .circuit-board {
-            position: absolute;
-            top: 30%;
-            left: 5%;
-            width: 150px;
-            height: 150px;
-        }
-        
-        .circuit-line {
-            position: absolute;
-            background: var(--neon-blue);
-            animation: circuitPulse 3s ease-in-out infinite;
-        }
-        
-        .line-1 {
-            width: 80px;
-            height: 2px;
-            top: 40px;
-            left: 10px;
-            animation-delay: 0s;
-        }
-        
-        .line-2 {
-            width: 2px;
-            height: 60px;
-            top: 40px;
-            left: 70px;
-            animation-delay: 1s;
-        }
-        
-        .line-3 {
-            width: 50px;
-            height: 2px;
-            top: 80px;
-            left: 50px;
-            animation-delay: 2s;
-        }
-        
-        .circuit-node {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: var(--neon-green);
-            border-radius: 50%;
-            animation: nodeGlow 2s ease-in-out infinite;
-        }
-        
-        .node-1 {
-            top: 36px;
-            left: 66px;
-            animation-delay: 0.5s;
-        }
-        
-        .node-2 {
-            top: 96px;
-            left: 66px;
-            animation-delay: 1.5s;
-        }
-        
-        .node-3 {
-            top: 76px;
-            left: 96px;
-            animation-delay: 2.5s;
-        }
-        
-        @keyframes circuitPulse {
-            0%, 100% { 
-                box-shadow: 0 0 5px currentColor;
-                opacity: 0.6;
-            }
-            50% { 
-                box-shadow: 0 0 20px currentColor;
-                opacity: 1;
-            }
-        }
-        
-        @keyframes nodeGlow {
-            0%, 100% { 
-                transform: scale(1);
-                box-shadow: 0 0 5px currentColor;
-            }
-            50% { 
-                transform: scale(1.5);
-                box-shadow: 0 0 15px currentColor;
-            }
-        }
-        
-        /* Loading Animation for Skills */
-        .skill-loader {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .skill-loader::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            animation: skillLoad 2s infinite;
-        }
-        
-        @keyframes skillLoad {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        
-        /* Project Icons Animation */
-        .project-icon {
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-        }
-        
-        .project-icon:hover {
-            transform: scale(1.3) rotateY(20deg) rotateX(10deg);
-            filter: drop-shadow(0 8px 16px rgba(255, 102, 0, 0.6));
-        }
-        
-        /* Advanced Text Effects */
-        .text-gradient-advanced {
-            background: linear-gradient(
-                135deg,
-                var(--orange-primary) 0%,
-                var(--orange-secondary) 25%,
-                var(--orange-light) 50%,
-                var(--orange-secondary) 75%,
-                var(--orange-primary) 100%
-            );
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 3s ease-in-out infinite;
-        }
-        
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        /* Enhanced Project Status Badge */
-        .status-badge {
-            background: linear-gradient(45deg, #10B981, #34D399);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.875rem;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        /* Professional Buttons */
-        .btn-professional {
-            background: linear-gradient(135deg, var(--orange-primary), var(--orange-secondary));
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .btn-professional::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.6s;
-        }
-        
-        .btn-professional:hover::before {
-            left: 100%;
-        }
-        
-        .btn-professional:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 
-                0 15px 35px rgba(255, 102, 0, 0.4),
-                0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Project Feature List */
-        .feature-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .feature-list li {
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        
-        .feature-list li:hover {
-            transform: translateX(10px);
-            color: var(--orange-light);
-        }
-        
-        .feature-list li::before {
-            content: '';
-            margin-left: 0.5rem;
-            font-size: 1.2em;
-        }
-        
-        /* Enhanced hover effects for all elements */
-        .hover-glow {
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-        }
-        
-        .hover-glow::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, var(--orange-primary), var(--orange-secondary));
-            opacity: 0;
-            border-radius: inherit;
-            transition: opacity 0.4s ease;
-            z-index: -1;
-        }
-        
-        .hover-glow:hover {
-            color: white !important;
-            transform: translateY(-3px);
-            text-shadow: 0 0 20px rgba(255, 102, 0, 0.8);
-        }
-        
-        .hover-glow:hover::before {
-            opacity: 0.1;
-        }
-        
         /* Professional Avatar */
         .avatar-container {
             position: relative;
@@ -719,7 +425,61 @@
             100% { transform: translateX(100%); }
         }
         
-        /* Advanced Project Cards */
+        /* Advanced Text Effects */
+        .text-gradient-advanced {
+            background: linear-gradient(
+                135deg,
+                var(--orange-primary) 0%,
+                var(--orange-secondary) 25%,
+                var(--orange-light) 50%,
+                var(--orange-secondary) 75%,
+                var(--orange-primary) 100%
+            );
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Professional Buttons */
+        .btn-professional {
+            background: linear-gradient(135deg, var(--orange-primary), var(--orange-secondary));
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .btn-professional::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        .btn-professional:hover::before {
+            left: 100%;
+        }
+        
+        .btn-professional:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 15px 35px rgba(255, 102, 0, 0.4),
+                0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Enhanced Project Cards */
         .project-card-advanced {
             background: var(--glass-bg);
             backdrop-filter: blur(15px);
@@ -747,21 +507,17 @@
                 0 0 30px rgba(255, 102, 0, 0.3);
         }
         
-        /* Floating Elements */
-        .floating-element {
-            position: absolute;
-            opacity: 0.1;
-            animation: float 6s ease-in-out infinite;
+        /* Advanced Icons */
+        .icon-3d {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+            color: var(--orange-primary);
         }
         
-        .floating-element:nth-child(1) { animation-delay: 0s; }
-        .floating-element:nth-child(2) { animation-delay: 2s; }
-        .floating-element:nth-child(3) { animation-delay: 4s; }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(5deg); }
-            66% { transform: translateY(-10px) rotate(-5deg); }
+        .icon-3d:hover {
+            transform: scale(1.2) rotateY(15deg);
+            color: var(--orange-light);
+            filter: drop-shadow(0 8px 16px rgba(255, 102, 0, 0.4));
         }
         
         /* Timeline Advanced */
@@ -802,43 +558,7 @@
             box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
         }
         
-        /* Advanced Icons */
-        .icon-3d {
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-        }
-        
-        .icon-3d:hover {
-            transform: scale(1.2) rotateY(15deg);
-            color: var(--orange-primary);
-            filter: drop-shadow(0 8px 16px rgba(255, 102, 0, 0.4));
-        }
-        
-        /* Responsive Typography */
-        .hero-title {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 900;
-            line-height: 1.1;
-        }
-        
-        .hero-subtitle {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            font-weight: 600;
-        }
-        
-        /* Advanced Sections */
-        .section-advanced {
-            padding: 4rem 0;
-            position: relative;
-        }
-        
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--orange-primary), transparent);
-            margin: 3rem 0;
-        }
-        
-        /* Contact Form Styling */
+        /* Contact Items */
         .contact-item {
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
@@ -870,7 +590,85 @@
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(255, 102, 0, 0.2);
         }
-
+        
+        /* Section styling */
+        .section-advanced {
+            padding: 4rem 0;
+            position: relative;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--orange-primary), transparent);
+            margin: 3rem 0;
+        }
+        
+        /* Enhanced hover effects */
+        .hover-glow {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+        
+        .hover-glow:hover {
+            color: var(--orange-light) !important;
+            transform: translateY(-3px);
+            text-shadow: 0 0 20px rgba(255, 102, 0, 0.8);
+        }
+        
+        /* Responsive Typography */
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 600;
+        }
+        
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-list li:hover {
+            transform: translateX(10px);
+            color: var(--orange-light);
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            color: var(--orange-primary);
+            font-weight: bold;
+            margin-left: 0.5rem;
+            font-size: 1.2em;
+        }
+        
+        /* Status Badge */
+        .status-badge {
+            background: linear-gradient(45deg, #10B981, #34D399);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.875rem;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
             body {
@@ -890,6 +688,10 @@
             
             .featured-project-card:hover {
                 transform: translateY(-8px) scale(1.02);
+            }
+            
+            .service-card:hover {
+                transform: translateY(-6px) scale(1.02);
             }
         }
     </style>
@@ -914,56 +716,6 @@
         <div class="geometric-shape hexagon" style="bottom: 40%; left: 10%; animation-delay: 4s;"></div>
         <div class="geometric-shape diamond" style="top: 60%; right: 15%; animation-delay: 1s;"></div>
         <div class="geometric-shape circle-ring" style="bottom: 20%; right: 30%; animation-delay: 3s;"></div>
-        
-        <!-- Neon Lines -->
-        <div class="neon-line horizontal" style="top: 25%; animation-delay: 1s;"></div>
-        <div class="neon-line vertical" style="left: 80%; animation-delay: 3s;"></div>
-        <div class="neon-line diagonal" style="top: 70%; left: 20%; animation-delay: 5s;"></div>
-        
-        <!-- Animated Waves -->
-        <div class="wave-container">
-            <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path class="wave-path" d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"></path>
-            </svg>
-        </div>
-        
-        <!-- DNA Helix Animation -->
-        <div class="dna-helix">
-            <div class="dna-strand"></div>
-            <div class="dna-strand" style="animation-delay: 0.5s;"></div>
-        </div>
-        
-        <!-- Matrix Rain Effect -->
-        <div class="matrix-rain">
-            <div class="matrix-column" style="left: 5%; animation-delay: 0s;"></div>
-            <div class="matrix-column" style="left: 15%; animation-delay: 1s;"></div>
-            <div class="matrix-column" style="left: 25%; animation-delay: 2s;"></div>
-            <div class="matrix-column" style="left: 35%; animation-delay: 0.5s;"></div>
-            <div class="matrix-column" style="left: 45%; animation-delay: 1.5s;"></div>
-            <div class="matrix-column" style="left: 55%; animation-delay: 2.5s;"></div>
-            <div class="matrix-column" style="left: 65%; animation-delay: 3s;"></div>
-            <div class="matrix-column" style="left: 75%; animation-delay: 0.3s;"></div>
-            <div class="matrix-column" style="left: 85%; animation-delay: 1.8s;"></div>
-            <div class="matrix-column" style="left: 95%; animation-delay: 2.2s;"></div>
-        </div>
-        
-        <!-- Circuit Board Animation -->
-        <div class="circuit-board">
-            <div class="circuit-line line-1"></div>
-            <div class="circuit-line line-2"></div>
-            <div class="circuit-line line-3"></div>
-            <div class="circuit-node node-1"></div>
-            <div class="circuit-node node-2"></div>
-            <div class="circuit-node node-3"></div>
-        </div>
-    </div>
-
-    <!-- Floating Background Elements -->
-    <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0">
-        <div class="floating-element absolute top-20 left-10 w-32 h-32 bg-orange-500 opacity-5 rounded-full"></div>
-        <div class="floating-element absolute top-40 right-20 w-24 h-24 bg-orange-400 opacity-5 rounded-full"></div>
-        <div class="floating-element absolute bottom-40 left-1/4 w-20 h-20 bg-orange-600 opacity-5 rounded-full"></div>
-        <div class="floating-element absolute bottom-20 right-1/3 w-28 h-28 bg-orange-300 opacity-5 rounded-full"></div>
     </div>
 
     <!-- Hero Section -->
@@ -980,13 +732,13 @@
             <!-- Name and Title -->
             <div data-aos="fade-up" data-aos-delay="200">
                 <h1 class="hero-title amiri-font text-gradient-advanced mb-6 hover-glow cursor-pointer">
-                    م/ابو محمد
+                    م/ أبو محمد
                 </h1>
                 <h2 class="hero-subtitle text-gradient-advanced mb-8">
-                    مهندس تكنولوجيا المعلومات
+                    مهندس تكنولوجيا المعلومات والشبكات
                 </h2>
                 <p class="text-xl md:text-2xl opacity-90 mb-12 max-w-4xl mx-auto leading-relaxed">
-                    مطور Full-Stack متخصص في تطوير تطبيقات الويب والموبايل باستخدام أحدث التقنيات والذكاء الاصطناعي. نتميز بالثقة والإبداع في تقديم أفضل الخدمات البرمجية بمعايير عالمية متطورة.
+                    مطور Full-Stack متخصص في تطوير تطبيقات الويب والموبايل باستخدام أحدث التقنيات والذكاء الاصطناعي. نتميز بالثقة والإبداع في تقديم أفضل الخدمات البرمجية بمعايير عالمية متطورة مع خبرة متقدمة في الشبكات وأمن المعلومات.
                 </p>
             </div>
 
@@ -1004,9 +756,9 @@
                     <i class="fas fa-phone"></i>
                     <span>اتصل الآن</span>
                 </a>
-                <a href="#portfolio" class="btn-professional px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center space-x-3 space-x-reverse">
-                    <i class="fas fa-briefcase"></i>
-                    <span>أعمالي</span>
+                <a href="#services" class="btn-professional px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center space-x-3 space-x-reverse">
+                    <i class="fas fa-code"></i>
+                    <span>خدماتنا البرمجية</span>
                 </a>
             </div>
 
@@ -1035,6 +787,221 @@
     <!-- Main Content -->
     <main class="relative z-10 container mx-auto px-6 pb-20">
         
+        <!-- Programming Services Section -->
+        <section id="services" class="section-advanced" data-aos="fade-up">
+            <div class="glass-card rounded-3xl p-8 md:p-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-gradient-advanced flex items-center amiri-font">
+                    <i class="fas fa-code ml-6 icon-3d"></i>
+                    🚀 خدماتنا البرمجية المتطورة
+                </h2>
+                <div class="section-divider"></div>
+                <p class="text-center text-xl mb-12 opacity-90 leading-relaxed">
+                    نقدم حلول برمجية شاملة ومتطورة لجميع لغات البرمجة والتقنيات الحديثة
+                </p>
+
+                <!-- Programming Languages Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8 mb-16">
+                    <!-- PHP -->
+                    <div class="service-card p-6 text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="lang-icon">
+                            <i class="fab fa-php text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">PHP</h3>
+                        <p class="text-sm opacity-80">Laravel, CodeIgniter, Symfony</p>
+                    </div>
+
+                    <!-- JavaScript -->
+                    <div class="service-card p-6 text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="lang-icon">
+                            <i class="fab fa-js-square text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">JavaScript</h3>
+                        <p class="text-sm opacity-80">React, Node.js, Vue.js</p>
+                    </div>
+
+                    <!-- Python -->
+                    <div class="service-card p-6 text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="lang-icon">
+                            <i class="fab fa-python text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">Python</h3>
+                        <p class="text-sm opacity-80">Django, Flask, AI/ML</p>
+                    </div>
+
+                    <!-- Java -->
+                    <div class="service-card p-6 text-center" data-aos="fade-up" data-aos-delay="400">
+                        <div class="lang-icon">
+                            <i class="fab fa-java text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">Java</h3>
+                        <p class="text-sm opacity-80">Spring Boot, Android</p>
+                    </div>
+
+                    <!-- C# -->
+                    <div class="service-card p-6 text-center" data-aos="fade-up" data-aos-delay="500">
+                        <div class="lang-icon">
+                            <i class="fas fa-hashtag text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">C#</h3>
+                        <p class="text-sm opacity-80">ASP.NET, WPF, Xamarin</p>
+                    </div>
+
+                    <!-- Flutter -->
+                    <div class="service-card p-6 text-center" data-aos="fade-up" data-aos-delay="600">
+                        <div class="lang-icon">
+                            <i class="fas fa-mobile-alt text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">Flutter</h3>
+                        <p class="text-sm opacity-80">Cross-platform Apps</p>
+                    </div>
+
+                    <!-- React -->
+                    <div class="service-card p-6 text-center" data-aos="fade-up" data-aos-delay="700">
+                        <div class="lang-icon">
+                            <i class="fab fa-react text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">React</h3>
+                        <p class="text-sm opacity-80">Modern UI Components</p>
+                    </div>
+
+                    <!-- Angular -->
+                    <div class="service-card p-6 text-center" data-aos="fade-up" data-aos-delay="800">
+                        <div class="lang-icon">
+                            <i class="fab fa-angular text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">Angular</h3>
+                        <p class="text-sm opacity-80">Enterprise Applications</p>
+                    </div>
+
+                    <!-- WordPress -->
+                    <div class="service-card p-6 text-center" data-aos="fade-up" data-aos-delay="900">
+                        <div class="lang-icon">
+                            <i class="fab fa-wordpress text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">WordPress</h3>
+                        <p class="text-sm opacity-80">Custom Themes & Plugins</p>
+                    </div>
+
+                    <!-- Database -->
+                    <div class="service-card p-6 text-center" data-aos="fade-up" data-aos-delay="1000">
+                        <div class="lang-icon">
+                            <i class="fas fa-database text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">Databases</h3>
+                        <p class="text-sm opacity-80">MySQL, SQL Server, Oracle</p>
+                    </div>
+
+                    <!-- AI/ML -->
+                    <div class="service-card p-6 text-center" data-aos="fade-up" data-aos-delay="1100">
+                        <div class="lang-icon">
+                            <i class="fas fa-robot text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">AI & ML</h3>
+                        <p class="text-sm opacity-80">Smart Solutions</p>
+                    </div>
+
+                    <!-- DevOps -->
+                    <div class="service-card p-6 text-center" data-aos="fade-up" data-aos-delay="1200">
+                        <div class="lang-icon">
+                            <i class="fas fa-server text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gradient-advanced mb-2">DevOps</h3>
+                        <p class="text-sm opacity-80">CI/CD, Docker, AWS</p>
+                    </div>
+                </div>
+
+                <!-- Services Description -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="contact-item">
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-globe icon-3d text-3xl ml-4"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-gradient-advanced mb-2">تطوير مواقع الويب</h3>
+                                <p class="text-gray-300 leading-relaxed">مواقع ويب متجاوبة وسريعة باستخدام أحدث التقنيات</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-mobile-alt icon-3d text-3xl ml-4"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-gradient-advanced mb-2">تطبيقات الموبايل</h3>
+                                <p class="text-gray-300 leading-relaxed">تطبيقات ذكية لأنظمة Android و iOS</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-shopping-cart icon-3d text-3xl ml-4"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-gradient-advanced mb-2">المتاجر الإلكترونية</h3>
+                                <p class="text-gray-300 leading-relaxed">منصات تجارة إلكترونية متكاملة وآمنة</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-robot icon-3d text-3xl ml-4"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-gradient-advanced mb-2">الذكاء الاصطناعي</h3>
+                                <p class="text-gray-300 leading-relaxed">حلول ذكية مبتكرة باستخدام AI و ML</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-database icon-3d text-3xl ml-4"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-gradient-advanced mb-2">إدارة قواعد البيانات</h3>
+                                <p class="text-gray-300 leading-relaxed">تصميم وتطوير قواعد بيانات فعالة وآمنة</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-shield-alt icon-3d text-3xl ml-4"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-gradient-advanced mb-2">أمن المعلومات</h3>
+                                <p class="text-gray-300 leading-relaxed">حماية متقدمة للأنظمة والبيانات</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why Choose Us -->
+                <div class="mt-16 p-8 bg-gradient-to-r from-orange-900/20 to-purple-900/20 rounded-3xl border border-orange-500/30">
+                    <h3 class="text-3xl font-bold text-gradient-advanced mb-6 text-center">🌟 لماذا تختارنا؟</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <i class="fas fa-clock icon-3d text-4xl mb-3"></i>
+                            <h4 class="text-lg font-bold text-gradient-advanced mb-2">سرعة في التسليم</h4>
+                            <p class="text-sm opacity-80">نلتزم بالمواعيد المحددة</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-award icon-3d text-4xl mb-3"></i>
+                            <h4 class="text-lg font-bold text-gradient-advanced mb-2">جودة عالية</h4>
+                            <p class="text-sm opacity-80">معايير برمجة احترافية</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-headset icon-3d text-4xl mb-3"></i>
+                            <h4 class="text-lg font-bold text-gradient-advanced mb-2">دعم فني 24/7</h4>
+                            <p class="text-sm opacity-80">مساعدة مستمرة</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-dollar-sign icon-3d text-4xl mb-3"></i>
+                            <h4 class="text-lg font-bold text-gradient-advanced mb-2">أسعار تنافسية</h4>
+                            <p class="text-sm opacity-80">قيمة مقابل المال</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Featured Projects Section -->
         <section id="portfolio" class="section-advanced" data-aos="fade-up">
             <div class="glass-card rounded-3xl p-8 md:p-12">
@@ -1054,7 +1021,7 @@
                     <div class="featured-project-card p-8" data-aos="fade-right" data-aos-delay="200">
                         <div class="flex items-center mb-6">
                             <div class="relative">
-                                <i class="fas fa-sign-language project-icon text-6xl ml-6 text-green-400"></i>
+                                <i class="fas fa-sign-language text-6xl ml-6 text-green-400"></i>
                                 <div class="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-ping"></div>
                                 <div class="absolute -bottom-1 -left-1 text-yellow-400 text-2xl animate-bounce">✨</div>
                             </div>
@@ -1093,7 +1060,7 @@
                         
                         <div class="text-center">
                             <div class="inline-block bg-gradient-to-r from-green-400 via-purple-500 to-pink-500 text-white px-6 py-3 rounded-full font-bold text-lg shadow-2xl transform hover:scale-110 transition-all duration-300 animate-pulse">
-                                تم  التطوير 
+                                تم التطوير 
                             </div>
                         </div>
                     </div>
@@ -1102,7 +1069,7 @@
                     <div class="featured-project-card p-8" data-aos="fade-left" data-aos-delay="400">
                         <div class="flex items-center mb-6">
                             <div class="relative">
-                                <i class="fas fa-crown project-icon text-6xl ml-6 text-yellow-400"></i>
+                                <i class="fas fa-crown text-6xl ml-6 text-yellow-400"></i>
                                 <div class="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-yellow-400 to-pink-500 rounded-full animate-ping"></div>
                                 <div class="absolute -bottom-1 -left-1 text-pink-400 text-2xl animate-bounce">💎</div>
                             </div>
@@ -1152,7 +1119,7 @@
                     <!-- مشروع 1 -->
                     <div class="project-card-advanced p-6">
                         <div class="flex items-center mb-4">
-                            <i class="fas fa-play-circle text-orange-500 text-3xl ml-4 icon-3d"></i>
+                            <i class="fas fa-play-circle icon-3d text-3xl ml-4"></i>
                             <h3 class="text-xl font-bold hover-glow cursor-pointer">منصة يمن فليكس</h3>
                         </div>
                         <p class="text-gray-300 mb-4 leading-relaxed">نظام مشاهدة فيديوهات متطور باستخدام Laravel وMySQL مع واجهة مستخدم احترافية</p>
@@ -1166,7 +1133,7 @@
                     <!-- مشروع 2 -->
                     <div class="project-card-advanced p-6">
                         <div class="flex items-center mb-4">
-                            <i class="fas fa-briefcase text-orange-500 text-3xl ml-4 icon-3d"></i>
+                            <i class="fas fa-briefcase icon-3d text-3xl ml-4"></i>
                             <h3 class="text-xl font-bold hover-glow cursor-pointer">منصة توظيف إلكتروني</h3>
                         </div>
                         <p class="text-gray-300 mb-4 leading-relaxed">منصة متكاملة للتوظيف باستخدام Laravel وLivewire مع خصائص تفاعلية متقدمة</p>
@@ -1180,7 +1147,7 @@
                     <!-- مشروع 3 -->
                     <div class="project-card-advanced p-6">
                         <div class="flex items-center mb-4">
-                            <i class="fas fa-graduation-cap text-orange-500 text-3xl ml-4 icon-3d"></i>
+                            <i class="fas fa-graduation-cap icon-3d text-3xl ml-4"></i>
                             <h3 class="text-xl font-bold hover-glow cursor-pointer">منبر العلم</h3>
                         </div>
                         <p class="text-gray-300 mb-4 leading-relaxed">منصة تعليمية تفاعلية مع نظام إدارة محتوى متطور (قيد الإنجاز)</p>
@@ -1194,7 +1161,7 @@
                     <!-- مشروع 4 -->
                     <div class="project-card-advanced p-6">
                         <div class="flex items-center mb-4">
-                            <i class="fas fa-hotel text-orange-500 text-3xl ml-4 icon-3d"></i>
+                            <i class="fas fa-hotel icon-3d text-3xl ml-4"></i>
                             <h3 class="text-xl font-bold hover-glow cursor-pointer">نظام إدارة الفنادق</h3>
                         </div>
                         <p class="text-gray-300 mb-4 leading-relaxed">نظام متكامل لإدارة الحجوزات والغرف وخدمات الفندق باستخدام PHP</p>
@@ -1208,7 +1175,7 @@
                     <!-- مشروع 5 -->
                     <div class="project-card-advanced p-6">
                         <div class="flex items-center mb-4">
-                            <i class="fas fa-hospital text-orange-500 text-3xl ml-4 icon-3d"></i>
+                            <i class="fas fa-hospital icon-3d text-3xl ml-4"></i>
                             <h3 class="text-xl font-bold hover-glow cursor-pointer">نظام المستشفيات</h3>
                         </div>
                         <p class="text-gray-300 mb-4 leading-relaxed">نظام إدارة شامل لمعلومات المرضى والمواعيد والسجلات الطبية</p>
@@ -1222,7 +1189,7 @@
                     <!-- مشروع 6 -->
                     <div class="project-card-advanced p-6">
                         <div class="flex items-center mb-4">
-                            <i class="fas fa-mobile-alt text-orange-500 text-3xl ml-4 icon-3d"></i>
+                            <i class="fas fa-mobile-alt icon-3d text-3xl ml-4"></i>
                             <h3 class="text-xl font-bold hover-glow cursor-pointer">تطبيقات موبايل ذكية</h3>
                         </div>
                         <p class="text-gray-300 mb-4 leading-relaxed">تطبيقات تعليمية وخدمية متطورة باستخدام Flutter والذكاء الاصطناعي</p>
@@ -1253,7 +1220,7 @@
                 </h2>
                 <div class="section-divider"></div>
                 <p class="text-lg md:text-xl leading-relaxed hover-glow cursor-pointer">
-                    مهندس برمجيات ومطور Full-Stack بخبرة متميزة في تطوير تطبيقات الويب باستخدام أحدث التقنيات ولغات البرمجة، مع معرفة جيدة بتكامل الشبكات، تصميم قواعد البيانات، وتوظيف الذكاء الاصطناعي في الحلول البرمجية. أتمتع بخبرة عملية في تحليل الأنظمة، تطوير الواجهات الأمامية والخلفية، وبناء تطبيقات موبايل متكاملة، وأسعى لتقديم حلول برمجية عالية الكفاءة والقابلة للتطوير.
+                    مهندس برمجيات ومطور Full-Stack بخبرة متميزة في تطوير تطبيقات الويب باستخدام أحدث التقنيات ولغات البرمجة، مع معرفة متقدمة بتكامل الشبكات وإدارة البنية التحتية، تصميم قواعد البيانات، وتوظيف الذكاء الاصطناعي في الحلول البرمجية. أتمتع بخبرة عملية في تحليل الأنظمة، تطوير الواجهات الأمامية والخلفية، وبناء تطبيقات موبايل متكاملة، وأسعى لتقديم حلول برمجية عالية الكفاءة والقابلية للتطوير مع التركيز على أمن الشبكات والمعلومات.
                 </p>
             </div>
         </section>
@@ -1269,32 +1236,48 @@
                 
                 <div class="timeline-advanced">
                     <div class="timeline-item-advanced hover-glow cursor-pointer">
-                        <h3 class="text-2xl md:text-3xl font-bold mb-3 text-gradient-advanced">مطور ويب Full-Stack (Freelance) </h3>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-3 text-gradient-advanced">مطور ويب Full-Stack ومختص شبكات (Freelance)</h3>
                         <p class="text-orange-400 mb-6 font-bold text-lg">منذ أكثر من 6 سنوات</p>
                         <div class="grid md:grid-cols-2 gap-4">
                             <div class="flex items-start space-x-3 space-x-reverse mb-4">
-                                <i class="fas fa-code text-orange-500 mt-1 icon-3d"></i>
+                                <i class="fas fa-code icon-3d text-3xl mt-1"></i>
                                 <span class="text-lg">تطوير مواقع وتطبيقات ويب متكاملة باستخدام Laravel, PHP, JavaScript, MySQL</span>
                             </div>
                             <div class="flex items-start space-x-3 space-x-reverse mb-4">
-                                <i class="fas fa-paint-brush text-orange-500 mt-1 icon-3d"></i>
+                                <i class="fas fa-paint-brush icon-3d text-3xl mt-1"></i>
                                 <span class="text-lg">بناء واجهات مستخدم تفاعلية باستخدام React وCSS/HTML وBootstrap</span>
                             </div>
                             <div class="flex items-start space-x-3 space-x-reverse mb-4">
-                                <i class="fas fa-database text-orange-500 mt-1 icon-3d"></i>
+                                <i class="fas fa-database icon-3d text-3xl mt-1"></i>
                                 <span class="text-lg">تصميم قواعد بيانات باستخدام SQL Server وMySQL وفق معايير الأمان والكفاءة</span>
                             </div>
                             <div class="flex items-start space-x-3 space-x-reverse mb-4">
-                                <i class="fas fa-robot text-orange-500 mt-1 icon-3d"></i>
-                                <span class="text-lg">ربط تطبيقات الويب بخدمات الذكاء الاصطناعي وتحليل البيانات الأولي</span>
+                                <i class="fas fa-robot icon-3d text-3xl mt-1"></i>
+                                <span class="text-lg">ربط تطبيقات الويب بخدمات الذكاء الاصطناعي وتحليل البيانات المتقدم</span>
                             </div>
                             <div class="flex items-start space-x-3 space-x-reverse mb-4">
-                                <i class="fas fa-mobile-alt text-orange-500 mt-1 icon-3d"></i>
+                                <i class="fas fa-mobile-alt icon-3d text-3xl mt-1"></i>
                                 <span class="text-lg">تطوير تطبيقات موبايل باستخدام Flutter وAndroid Studio</span>
                             </div>
                             <div class="flex items-start space-x-3 space-x-reverse mb-4">
-                                <i class="fas fa-tools text-orange-500 mt-1 icon-3d"></i>
+                                <i class="fas fa-network-wired network-icon text-3xl mt-1"></i>
+                                <span class="text-lg">إدارة وتكوين الشبكات وأنظمة الخوادم وحلول البنية التحتية</span>
+                            </div>
+                            <div class="flex items-start space-x-3 space-x-reverse mb-4">
+                                <i class="fas fa-shield-alt network-icon text-3xl mt-1"></i>
+                                <span class="text-lg">تطبيق معايير أمن الشبكات والمعلومات وحماية البيانات</span>
+                            </div>
+                            <div class="flex items-start space-x-3 space-x-reverse mb-4">
+                                <i class="fas fa-server network-icon text-3xl mt-1"></i>
+                                <span class="text-lg">صيانة وتحديث أنظمة الخوادم والشبكات المؤسسية</span>
+                            </div>
+                            <div class="flex items-start space-x-3 space-x-reverse mb-4">
+                                <i class="fas fa-tools icon-3d text-3xl mt-1"></i>
                                 <span class="text-lg">العمل على ERP Pro Onyx في شارع صخر لدى محالت عصر الكمبيوتر</span>
+                            </div>
+                            <div class="flex items-start space-x-3 space-x-reverse mb-4">
+                                <i class="fas fa-wifi network-icon text-3xl mt-1"></i>
+                                <span class="text-lg">تصميم وتنفيذ حلول الشبكات اللاسلكية والسلكية للمؤسسات</span>
                             </div>
                         </div>
                     </div>
@@ -1314,10 +1297,10 @@
                     <div class="section-divider"></div>
                     
                     <div class="space-y-8">
-                        <div class="skill-container skill-loader">
+                        <div class="skill-container">
                             <div class="flex justify-between items-center mb-3">
                                 <h3 class="text-xl font-bold hover-glow cursor-pointer flex items-center">
-                                    <i class="fas fa-globe text-orange-500 ml-3 icon-3d"></i>
+                                    <i class="fas fa-globe icon-3d text-3xl ml-3"></i>
                                     تطوير الويب
                                 </h3>
                                 <span class="text-orange-400 font-bold">95%</span>
@@ -1331,15 +1314,33 @@
                                 <span class="bg-gradient-to-r from-orange-500 to-orange-600 px-3 py-1 rounded-full text-sm font-semibold">JavaScript</span>
                                 <span class="bg-gradient-to-r from-orange-500 to-orange-600 px-3 py-1 rounded-full text-sm font-semibold">ASP.NET</span>
                                 <span class="bg-gradient-to-r from-orange-500 to-orange-600 px-3 py-1 rounded-full text-sm font-semibold">C#</span>
-                                 <span class="bg-gradient-to-r from-orange-500 to-orange-600 px-3 py-1 rounded-full text-sm font-semibold">C++</span>
-                               
+                                <span class="bg-gradient-to-r from-orange-500 to-orange-600 px-3 py-1 rounded-full text-sm font-semibold">C++</span>
                             </div>
                         </div>
                         
-                        <div class="skill-container skill-loader">
+                        <div class="skill-container">
                             <div class="flex justify-between items-center mb-3">
                                 <h3 class="text-xl font-bold hover-glow cursor-pointer flex items-center">
-                                    <i class="fas fa-desktop text-orange-500 ml-3 icon-3d"></i>
+                                    <i class="fas fa-network-wired network-icon text-3xl ml-3"></i>
+                                    الشبكات وأمن المعلومات
+                                </h3>
+                                <span class="text-orange-400 font-bold">88%</span>
+                            </div>
+                            <div class="skill-bar-advanced">
+                                <div class="skill-progress-advanced" data-width="88"></div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="bg-gradient-to-r from-green-500 to-green-600 px-3 py-1 rounded-full text-sm font-semibold">Network Security</span>
+                                <span class="bg-gradient-to-r from-green-500 to-green-600 px-3 py-1 rounded-full text-sm font-semibold">Cisco</span>
+                                <span class="bg-gradient-to-r from-green-500 to-green-600 px-3 py-1 rounded-full text-sm font-semibold">Firewall</span>
+                                <span class="bg-gradient-to-r from-green-500 to-green-600 px-3 py-1 rounded-full text-sm font-semibold">VPN</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-container">
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-xl font-bold hover-glow cursor-pointer flex items-center">
+                                    <i class="fas fa-desktop icon-3d text-3xl ml-3"></i>
                                     الواجهات الأمامية
                                 </h3>
                                 <span class="text-orange-400 font-bold">90%</span>
@@ -1355,10 +1356,10 @@
                             </div>
                         </div>
                         
-                        <div class="skill-container skill-loader">
+                        <div class="skill-container">
                             <div class="flex justify-between items-center mb-3">
                                 <h3 class="text-xl font-bold hover-glow cursor-pointer flex items-center">
-                                    <i class="fas fa-mobile text-orange-500 ml-3 icon-3d"></i>
+                                    <i class="fas fa-mobile icon-3d text-3xl ml-3"></i>
                                     تطبيقات الموبايل
                                 </h3>
                                 <span class="text-orange-400 font-bold">85%</span>
@@ -1367,21 +1368,21 @@
                                 <div class="skill-progress-advanced" data-width="85"></div>
                             </div>
                             <div class="flex flex-wrap gap-2 mt-4">
-                                <span class="bg-gradient-to-r from-green-500 to-green-600 px-3 py-1 rounded-full text-sm font-semibold">Flutter</span>
-                                <span class="bg-gradient-to-r from-green-500 to-green-600 px-3 py-1 rounded-full text-sm font-semibold">Android Studio</span>
+                                <span class="bg-gradient-to-r from-cyan-500 to-cyan-600 px-3 py-1 rounded-full text-sm font-semibold">Flutter</span>
+                                <span class="bg-gradient-to-r from-cyan-500 to-cyan-600 px-3 py-1 rounded-full text-sm font-semibold">Android Studio</span>
                             </div>
                         </div>
                         
-                        <div class="skill-container skill-loader">
+                        <div class="skill-container">
                             <div class="flex justify-between items-center mb-3">
                                 <h3 class="text-xl font-bold hover-glow cursor-pointer flex items-center">
-                                    <i class="fas fa-database text-orange-500 ml-3 icon-3d"></i>
+                                    <i class="fas fa-database icon-3d text-3xl ml-3"></i>
                                     قواعد البيانات
                                 </h3>
                                 <span class="text-orange-400 font-bold">90%</span>
                             </div>
                             <div class="skill-bar-advanced">
-                                <div class="skill-progress-advanced" data-width="88"></div>
+                                <div class="skill-progress-advanced" data-width="90"></div>
                             </div>
                             <div class="flex flex-wrap gap-2 mt-4">
                                 <span class="bg-gradient-to-r from-purple-500 to-purple-600 px-3 py-1 rounded-full text-sm font-semibold">MySQL</span>
@@ -1391,29 +1392,29 @@
                         </div>
                         
                         <!-- Additional Skills -->
-                        <div class="skill-container skill-loader">
+                        <div class="skill-container">
                             <div class="flex justify-between items-center mb-3">
                                 <h3 class="text-xl font-bold hover-glow cursor-pointer flex items-center">
-                                    <i class="fas fa-user-graduate text-indigo-500 ml-3 icon-3d"></i>
+                                    <i class="fas fa-user-graduate icon-3d text-3xl ml-3"></i>
                                     رسائل الدكتوراة
                                 </h3>
-                                <span class="text-indigo-400 font-bold">95%</span>
+                                <span class="text-orange-400 font-bold">95%</span>
                             </div>
                             <div class="skill-bar-advanced">
                                 <div class="skill-progress-advanced" data-width="95"></div>
                             </div>
                         </div>
 
-                        <div class="skill-container skill-loader">
+                        <div class="skill-container">
                             <div class="flex justify-between items-center mb-3">
                                 <h3 class="text-xl font-bold hover-glow cursor-pointer flex items-center">
-                                    <i class="fas fa-university text-blue-500 ml-3 icon-3d"></i>
+                                    <i class="fas fa-university icon-3d text-3xl ml-3"></i>
                                     رسائل الماجستير
                                 </h3>
-                                <span class="text-blue-400 font-bold">95%</span>
+                                <span class="text-orange-400 font-bold">95%</span>
                             </div>
                             <div class="skill-bar-advanced">
-                                <div class="skill-progress-advanced" data-width="90"></div>
+                                <div class="skill-progress-advanced" data-width="95"></div>
                             </div>
                         </div>
                     </div>
@@ -1430,7 +1431,7 @@
                     <div class="space-y-6">
                         <div class="contact-item hover-glow cursor-pointer">
                             <div class="flex items-center">
-                                <i class="fas fa-brain text-orange-500 ml-4 text-2xl icon-3d"></i>
+                                <i class="fas fa-brain icon-3d text-2xl ml-4"></i>
                                 <div>
                                     <h3 class="text-lg font-bold mb-1">التفكير التحليلي وحل المشكلات</h3>
                                     <p class="text-sm opacity-80">القدرة على تحليل المشاكل المعقدة وإيجاد حلول منهجية</p>
@@ -1440,7 +1441,7 @@
                         
                         <div class="contact-item hover-glow cursor-pointer">
                             <div class="flex items-center">
-                                <i class="fas fa-users text-orange-500 ml-4 text-2xl icon-3d"></i>
+                                <i class="fas fa-users icon-3d text-2xl ml-4"></i>
                                 <div>
                                     <h3 class="text-lg font-bold mb-1">العمل الجماعي والتواصل الفعال</h3>
                                     <p class="text-sm opacity-80">خبرة في العمل ضمن فرق متنوعة والتواصل مع العملاء</p>
@@ -1450,17 +1451,17 @@
                         
                         <div class="contact-item hover-glow cursor-pointer">
                             <div class="flex items-center">
-                                <i class="fas fa-graduation-cap text-orange-500 ml-4 text-2xl icon-3d"></i>
+                                <i class="fas fa-graduation-cap icon-3d text-2xl ml-4"></i>
                                 <div>
                                     <h3 class="text-lg font-bold mb-1">القدرة على التعلم الذاتي</h3>
-                                    <p class="text-sm opacity-80">متابعة أحدث التقنيات والأدوات في مجال البرمجة</p>
+                                    <p class="text-sm opacity-80">متابعة أحدث التقنيات والأدوات في مجال البرمجة والشبكات</p>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="contact-item hover-glow cursor-pointer">
                             <div class="flex items-center">
-                                <i class="fas fa-clock text-orange-500 ml-4 text-2xl icon-3d"></i>
+                                <i class="fas fa-clock icon-3d text-2xl ml-4"></i>
                                 <div>
                                     <h3 class="text-lg font-bold mb-1">إدارة الوقت وتحقيق الأهداف</h3>
                                     <p class="text-sm opacity-80">تنظيم المهام وتسليم المشاريع في المواعيد المحددة</p>
@@ -1470,10 +1471,20 @@
                         
                         <div class="contact-item hover-glow cursor-pointer">
                             <div class="flex items-center">
-                                <i class="fas fa-shield-alt text-orange-500 ml-4 text-2xl icon-3d"></i>
+                                <i class="fas fa-shield-alt icon-3d text-2xl ml-4"></i>
                                 <div>
                                     <h3 class="text-lg font-bold mb-1">العمل تحت الضغط والتكيف</h3>
                                     <p class="text-sm opacity-80">القدرة على التكيف مع بيئات العمل المختلفة والمواقف الصعبة</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item hover-glow cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fas fa-tools network-icon text-2xl ml-4"></i>
+                                <div>
+                                    <h3 class="text-lg font-bold mb-1">صيانة وإدارة الأنظمة</h3>
+                                    <p class="text-sm opacity-80">خبرة في صيانة الأجهزة والشبكات وحل المشاكل التقنية</p>
                                 </div>
                             </div>
                         </div>
@@ -1525,35 +1536,42 @@
                     <div class="space-y-4">
                         <div class="contact-item hover-glow cursor-pointer">
                             <div class="flex items-center">
-                                <i class="fas fa-award text-orange-500 ml-3 icon-3d"></i>
+                                <i class="fas fa-award icon-3d text-3xl ml-3"></i>
                                 <span class="font-semibold">دبلوم إدارة تقنية المعلومات -- Alison</span>
                             </div>
                         </div>
                         
                         <div class="contact-item hover-glow cursor-pointer">
                             <div class="flex items-center">
-                                <i class="fas fa-shield-alt text-orange-500 ml-3 icon-3d"></i>
-                                <span class="font-semibold"> الأمن السيبراني -- Cisco</span>
+                                <i class="fas fa-shield-alt network-icon text-3xl ml-3"></i>
+                                <span class="font-semibold">الأمن السيبراني -- Cisco</span>
                             </div>
                         </div>
                         
                         <div class="contact-item hover-glow cursor-pointer">
                             <div class="flex items-center">
-                                <i class="fas fa-language text-orange-500 ml-3 icon-3d"></i>
+                                <i class="fas fa-network-wired network-icon text-3xl ml-3"></i>
+                                <span class="font-semibold">شهادات شبكات متقدمة -- متعددة</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item hover-glow cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fas fa-language icon-3d text-3xl ml-3"></i>
                                 <span class="font-semibold">اللغة الإنجليزية -- معهد Skills</span>
                             </div>
                         </div>
                         
                         <div class="contact-item hover-glow cursor-pointer">
                             <div class="flex items-center">
-                                <i class="fas fa-computer text-orange-500 ml-3 icon-3d"></i>
+                                <i class="fas fa-computer icon-3d text-3xl ml-3"></i>
                                 <span class="font-semibold">الرخصة الدولية لقيادة الحاسوب (ICDL)</span>
                             </div>
                         </div>
                         
                         <div class="contact-item hover-glow cursor-pointer">
                             <div class="flex items-center">
-                                <i class="fas fa-globe text-orange-500 ml-3 icon-3d"></i>
+                                <i class="fas fa-globe icon-3d text-3xl ml-3"></i>
                                 <span class="font-semibold">دورات متعددة عبر منصة إيفاد</span>
                             </div>
                         </div>
@@ -1617,15 +1635,15 @@
                 
                 <div class="mt-12 flex justify-center space-x-8 space-x-reverse">
                     <div class="text-center">
-                        <i class="fab fa-linkedin text-4xl mb-2 icon-3d hover-glow cursor-pointer"></i>
+                        <i class="fab fa-linkedin icon-3d text-4xl mb-2 hover-glow cursor-pointer"></i>
                         <p class="text-sm">LinkedIn</p>
                     </div>
                     <div class="text-center">
-                        <i class="fab fa-github text-4xl mb-2 icon-3d hover-glow cursor-pointer"></i>
+                        <i class="fab fa-github icon-3d text-4xl mb-2 hover-glow cursor-pointer"></i>
                         <p class="text-sm">GitHub</p>
                     </div>
                     <div class="text-center">
-                        <i class="fab fa-twitter text-4xl mb-2 icon-3d hover-glow cursor-pointer"></i>
+                        <i class="fab fa-twitter icon-3d text-4xl mb-2 hover-glow cursor-pointer"></i>
                         <p class="text-sm">Twitter</p>
                     </div>
                 </div>
@@ -1636,7 +1654,7 @@
     <!-- Footer -->
     <footer class="relative z-10 text-center py-12 border-t border-white border-opacity-20">
         <div class="container mx-auto px-6">
-            <p class="text-lg opacity-70 mb-4">© 2025 أسحاق شوقي  - جميع الحقوق محفوظة</p>
+            <p class="text-lg opacity-70 mb-4">© 2025 أسحاق شوقي - جميع الحقوق محفوظة</p>
             <p class="text-sm opacity-50">تم تصميم هذا الموقع باستخدام أحدث تقنيات الويب مع التميز والإبداع</p>
         </div>
     </footer>
@@ -1685,7 +1703,7 @@
         // Enhanced parallax effect
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.floating-element');
+            const parallaxElements = document.querySelectorAll('.geometric-shape');
             
             parallaxElements.forEach((element, index) => {
                 const speed = 0.5 + (index * 0.1);
@@ -1712,10 +1730,15 @@
         setInterval(createParticle, 2000);
 
         // Enhanced hover effects for project cards
-        document.querySelectorAll('.project-card-advanced, .featured-project-card').forEach(card => {
+        document.querySelectorAll('.project-card-advanced, .featured-project-card, .service-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
-                this.style.transform = this.classList.contains('featured-project-card') ? 
-                    'translateY(-15px) scale(1.03)' : 'translateY(-10px) rotateY(5deg) scale(1.02)';
+                if (this.classList.contains('featured-project-card')) {
+                    this.style.transform = 'translateY(-15px) scale(1.03)';
+                } else if (this.classList.contains('service-card')) {
+                    this.style.transform = 'translateY(-12px) scale(1.03)';
+                } else {
+                    this.style.transform = 'translateY(-10px) rotateY(5deg) scale(1.02)';
+                }
             });
             
             card.addEventListener('mouseleave', function() {
@@ -1737,7 +1760,7 @@
         });
 
         // Enhanced Loading Effect for Skills
-        document.querySelectorAll('.skill-loader').forEach(skill => {
+        document.querySelectorAll('.skill-container').forEach(skill => {
             skill.addEventListener('mouseenter', function() {
                 this.style.transform = 'scale(1.02)';
                 this.style.background = 'rgba(255, 255, 255, 0.15)';
@@ -1745,86 +1768,33 @@
             
             skill.addEventListener('mouseleave', function() {
                 this.style.transform = 'scale(1)';
-                this.style.background = 'var(--glass-bg)';
+                this.style.background = '';
             });
         });
 
-        // Geometric Shapes Interactive Animation
-        document.querySelectorAll('.geometric-shape').forEach(shape => {
-            shape.addEventListener('mouseenter', function() {
-                this.style.animationPlayState = 'paused';
-                this.style.transform = 'scale(1.5) rotate(45deg)';
-                this.style.opacity = '0.8';
+        // Network Icons Animation
+        document.querySelectorAll('.network-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.3) rotate(10deg)';
+                this.style.color = 'var(--orange-light)';
             });
             
-            shape.addEventListener('mouseleave', function() {
-                this.style.animationPlayState = 'running';
-                this.style.transform = '';
-                this.style.opacity = '';
+            icon.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+                this.style.color = 'var(--orange-primary)';
             });
         });
 
-        // Matrix Rain Interactive Effect
-        let isMatrixActive = false;
-        
-        function toggleMatrixRain() {
-            const matrixColumns = document.querySelectorAll('.matrix-column');
-            if (!isMatrixActive) {
-                matrixColumns.forEach((column, index) => {
-                    column.style.animationDuration = '3s';
-                    column.style.opacity = '0.8';
-                });
-                isMatrixActive = true;
-            } else {
-                matrixColumns.forEach((column, index) => {
-                    column.style.animationDuration = '8s';
-                    column.style.opacity = '';
-                });
-                isMatrixActive = false;
-            }
-        }
-
-        // Toggle matrix effect on hero section hover
-        document.querySelector('header').addEventListener('mouseenter', toggleMatrixRain);
-        document.querySelector('header').addEventListener('mouseleave', toggleMatrixRain);
-
-        // DNA Helix Speed Control
-        document.querySelectorAll('.dna-strand').forEach(strand => {
-            strand.addEventListener('mouseenter', function() {
-                this.style.animationDuration = '1s';
-                this.style.filter = 'brightness(1.5)';
+        // Programming Language Icons Animation
+        document.querySelectorAll('.lang-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.2) rotateY(15deg)';
             });
             
-            strand.addEventListener('mouseleave', function() {
-                this.style.animationDuration = '4s';
-                this.style.filter = '';
+            icon.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotateY(0deg)';
             });
         });
-
-        // Circuit Board Interactive Pulse
-        document.querySelectorAll('.circuit-node').forEach(node => {
-            node.addEventListener('click', function() {
-                this.style.animation = 'none';
-                setTimeout(() => {
-                    this.style.animation = '';
-                }, 100);
-            });
-        });
-
-        // Advanced Scroll Progress Indicator
-        function updateScrollProgress() {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.body.offsetHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            
-            // Update geometric shapes based on scroll
-            document.querySelectorAll('.geometric-shape').forEach((shape, index) => {
-                const offset = (scrollPercent + (index * 20)) % 360;
-                shape.style.filter = `hue-rotate(${offset}deg)`;
-            });
-        }
-
-        window.addEventListener('scroll', updateScrollProgress);
 
         // Add keyboard navigation for accessibility
         document.addEventListener('keydown', function(e) {
@@ -1835,6 +1805,16 @@
 
         document.addEventListener('mousedown', function() {
             document.body.classList.remove('keyboard-navigation');
+        });
+
+        // Service cards special animations
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.animation = 'pulse 0.6s ease-in-out';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 600);
+            });
         });
     </script>
 </body>
