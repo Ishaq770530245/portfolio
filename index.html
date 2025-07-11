@@ -6,11 +6,11 @@
     <title>أسحاق شوقي - مهندس تكنولوجيا المعلومات</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&family=Amiri:wght@400;700&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-bg: #002244;
+            --primary-bg: #001b3d;
             --secondary-bg: #003366;
             --accent-bg: #004488;
             --orange-primary: #ff6600;
@@ -26,7 +26,7 @@
         }
         
         * {
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
             margin: 0;
             padding: 0;
         }
@@ -40,16 +40,20 @@
             color: white;
             line-height: 1.4;
             overflow-x: hidden;
+            font-weight: 400;
         }
         
-        /* Simple Background */
+        /* Enhanced Background */
         .hero-background {
-            background: var(--primary-bg);
+            background: linear-gradient(135deg, 
+                var(--primary-bg) 0%, 
+                var(--secondary-bg) 50%, 
+                var(--accent-bg) 100%);
             position: relative;
             min-height: 100vh;
         }
         
-        /* ANIMATED TEXT EFFECTS */
+        /* ENHANCED TEXT EFFECTS */
         .text-gradient-advanced {
             background: linear-gradient(45deg,
                 #ff6600, #ff8833, #ffaa33, #ff3366, #33ff66, #3366ff, #ff6600);
@@ -58,9 +62,10 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: gradientShift 3s ease-in-out infinite;
+            font-weight: 700;
         }
         
-        /* Color shifting animations */
+        /* Enhanced Color shifting animations */
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             25% { background-position: 100% 50%; }
@@ -70,13 +75,13 @@
         }
         
         @keyframes colorPulse {
-            0% { color: #ff6600; text-shadow: 0 0 10px #ff6600; }
-            16% { color: #ff8833; text-shadow: 0 0 15px #ff8833; }
-            32% { color: #ffaa33; text-shadow: 0 0 20px #ffaa33; }
-            48% { color: #ff3366; text-shadow: 0 0 15px #ff3366; }
-            64% { color: #33ff66; text-shadow: 0 0 20px #33ff66; }
-            80% { color: #3366ff; text-shadow: 0 0 15px #3366ff; }
-            100% { color: #ff6600; text-shadow: 0 0 10px #ff6600; }
+            0% { color: #ff6600; }
+            16% { color: #ff8833; }
+            32% { color: #ffaa33; }
+            48% { color: #ff3366; }
+            64% { color: #33ff66; }
+            80% { color: #3366ff; }
+            100% { color: #ff6600; }
         }
         
         @keyframes textBounce {
@@ -85,18 +90,9 @@
             60% { transform: translateY(-5px); }
         }
         
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 5px #ff6600, 0 0 10px #ff6600; }
-            25% { text-shadow: 0 0 10px #ff8833, 0 0 20px #ff8833, 0 0 30px #ff8833; }
-            50% { text-shadow: 0 0 15px #ffaa33, 0 0 25px #ffaa33, 0 0 35px #ffaa33; }
-            75% { text-shadow: 0 0 20px #ff3366, 0 0 30px #ff3366, 0 0 40px #ff3366; }
-            100% { text-shadow: 0 0 5px #ff6600, 0 0 10px #ff6600; }
-        }
-        
-        /* ANIMATED ICONS - Fixed for orange background elements */
+        /* CLEAN ANIMATED ICONS */
         .icon-3d {
             color: #fff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
             animation: iconColorShift 2.5s ease-in-out infinite, iconFloat 3s ease-in-out infinite;
             display: inline-block;
         }
@@ -106,70 +102,65 @@
         .orange-static .icon-3d {
             color: white !important;
             animation: none !important;
-            text-shadow: none !important;
         }
         
         .icon-3d:hover {
             animation: iconSpin 1s linear infinite, iconPulse 0.5s ease-in-out infinite;
+            transform: scale(1.1);
         }
         
         /* No hover animations for orange background elements */
         .btn-professional .icon-3d:hover,
         .orange-static .icon-3d:hover {
             animation: none !important;
+            transform: none !important;
         }
         
         @keyframes iconColorShift {
             0% { 
                 color: #ff6600; 
-                text-shadow: 0 0 15px #ff6600, 0 0 25px #ff6600; 
                 transform: scale(1);
             }
             20% { 
                 color: #ff8833; 
-                text-shadow: 0 0 20px #ff8833, 0 0 30px #ff8833; 
-                transform: scale(1.1);
+                transform: scale(1.05);
             }
             40% { 
                 color: #ffaa33; 
-                text-shadow: 0 0 25px #ffaa33, 0 0 35px #ffaa33; 
-                transform: scale(1.05);
+                transform: scale(1.1);
             }
             60% { 
                 color: #ff3366; 
-                text-shadow: 0 0 20px #ff3366, 0 0 30px #ff3366; 
-                transform: scale(1.1);
+                transform: scale(1.05);
             }
             80% { 
                 color: #33ff66; 
-                text-shadow: 0 0 25px #33ff66, 0 0 35px #33ff66; 
-                transform: scale(1.05);
+                transform: scale(1.1);
             }
             100% { 
                 color: #ff6600; 
-                text-shadow: 0 0 15px #ff6600, 0 0 25px #ff6600; 
                 transform: scale(1);
             }
         }
         
         @keyframes iconFloat {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            25% { transform: translateY(-5px) rotate(2deg); }
-            50% { transform: translateY(-10px) rotate(0deg); }
-            75% { transform: translateY(-5px) rotate(-2deg); }
+            25% { transform: translateY(-8px) rotate(3deg); }
+            50% { transform: translateY(-15px) rotate(0deg); }
+            75% { transform: translateY(-8px) rotate(-3deg); }
         }
         
         @keyframes iconSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% { transform: rotate(0deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1.1); }
         }
         
         @keyframes iconPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+            0%, 100% { transform: scale(1.1); }
+            50% { transform: scale(1.3); }
         }
         
-        /* ANIMATED HOVER EFFECTS */
+        /* CLEAN HOVER EFFECTS */
         .hover-glow {
             transition: all 0.3s ease;
             position: relative;
@@ -184,13 +175,15 @@
         }
         
         .hover-glow:hover {
-            animation: textBounce 0.6s ease-in-out infinite, textGlow 2s ease-in-out infinite;
+            animation: textBounce 0.6s ease-in-out infinite;
+            transform: translateY(-2px);
         }
         
         /* No hover animations for orange background elements */
         .btn-professional .hover-glow:hover,
         .orange-static .hover-glow:hover {
             animation: none !important;
+            transform: none !important;
         }
         
         @keyframes textColorShift {
@@ -201,84 +194,91 @@
             100% { color: #ffffff; }
         }
         
-        /* Typography with animation */
+        /* Enhanced Typography */
         .hero-title {
             font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 900;
             line-height: 1.1;
-            animation: textBounce 2s ease-in-out infinite, textGlow 3s ease-in-out infinite;
+            animation: textBounce 2s ease-in-out infinite;
+            letter-spacing: -0.02em;
         }
         
         .hero-subtitle {
             font-size: clamp(1.5rem, 4vw, 2.5rem);
-            font-weight: 600;
+            font-weight: 700;
             animation: colorPulse 3s ease-in-out infinite;
+            letter-spacing: -0.01em;
         }
         
-        /* Static Glass Cards */
+        /* Enhanced Glass Cards */
         .glass-card {
             background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.1) 0%,
-                rgba(255, 255, 255, 0.05) 50%,
-                rgba(255, 255, 255, 0.02) 100%);
-            backdrop-filter: blur(25px) saturate(200%);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+                rgba(255, 255, 255, 0.12) 0%,
+                rgba(255, 255, 255, 0.08) 50%,
+                rgba(255, 255, 255, 0.04) 100%);
+            backdrop-filter: blur(30px) saturate(200%);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             color: white;
             position: relative;
             overflow: hidden;
         }
         
         .glass-card:hover {
-            border-color: rgba(255, 102, 0, 0.3);
+            border-color: rgba(255, 102, 0, 0.4);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
         }
         
-        /* Static Service Cards */
+        /* Enhanced Service Cards */
         .service-card {
             background: linear-gradient(145deg, 
-                rgba(255, 255, 255, 0.08) 0%,
-                rgba(255, 255, 255, 0.03) 100%);
-            backdrop-filter: blur(20px) saturate(180%);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(25px) saturate(180%);
+            border: 2px solid rgba(255, 255, 255, 0.12);
             border-radius: 20px;
             position: relative;
             overflow: hidden;
             color: white;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
         
         .service-card:hover {
             background: linear-gradient(145deg, 
-                rgba(255, 102, 0, 0.2) 0%,
-                rgba(255, 136, 51, 0.15) 50%,
-                rgba(255, 170, 51, 0.1) 100%);
-            border-color: rgba(255, 102, 0, 0.5);
+                rgba(255, 102, 0, 0.25) 0%,
+                rgba(255, 136, 51, 0.18) 50%,
+                rgba(255, 170, 51, 0.12) 100%);
+            border-color: rgba(255, 102, 0, 0.6);
+            transform: translateY(-5px);
         }
         
-        /* Static Project Cards */
+        /* Enhanced Project Cards */
         .featured-project-card {
             background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.08) 0%,
-                rgba(255, 255, 255, 0.03) 50%,
-                rgba(255, 255, 255, 0.01) 100%);
-            backdrop-filter: blur(30px) saturate(200%);
-            border: 3px solid rgba(255, 255, 255, 0.1);
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.05) 50%,
+                rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(35px) saturate(200%);
+            border: 3px solid rgba(255, 255, 255, 0.12);
             border-radius: 25px;
             position: relative;
             overflow: hidden;
             color: white;
             cursor: pointer;
+            transition: all 0.4s ease;
         }
         
         .featured-project-card:hover {
             background: linear-gradient(135deg, 
-                rgba(255, 102, 0, 0.2) 0%,
-                rgba(255, 136, 51, 0.15) 50%,
-                rgba(255, 170, 51, 0.1) 100%);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+                rgba(255, 102, 0, 0.25) 0%,
+                rgba(255, 136, 51, 0.18) 50%,
+                rgba(255, 170, 51, 0.12) 100%);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+            transform: translateY(-8px);
         }
         
-        /* Animated Language Icons */
+        /* Enhanced Language Icons */
         .lang-icon {
             width: 70px;
             height: 70px;
@@ -290,27 +290,28 @@
             position: relative;
             overflow: hidden;
             background: linear-gradient(145deg, 
-                rgba(255, 255, 255, 0.1), 
-                rgba(255, 255, 255, 0.05));
-            border: 3px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+                rgba(255, 255, 255, 0.12), 
+                rgba(255, 255, 255, 0.08));
+            border: 3px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
             animation: iconFloat 2s ease-in-out infinite;
+            transition: all 0.3s ease;
         }
         
         .lang-icon:hover {
-            border-color: rgba(255, 102, 0, 0.5);
-            box-shadow: 0 15px 30px rgba(255, 102, 0, 0.3);
+            border-color: rgba(255, 102, 0, 0.6);
+            box-shadow: 0 20px 40px rgba(255, 102, 0, 0.4);
             animation: iconPulse 0.5s ease-in-out infinite;
+            transform: scale(1.1);
         }
         
         .lang-icon i {
             color: white;
             font-size: 2rem;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
             animation: iconColorShift 3s ease-in-out infinite;
         }
         
-        /* Static Avatar */
+        /* Enhanced Avatar */
         .avatar-container {
             position: relative;
             width: 200px;
@@ -326,7 +327,7 @@
             height: 230px;
             border: 4px solid var(--orange-primary);
             border-radius: 50%;
-            box-shadow: 0 0 40px rgba(255, 102, 0, 0.4);
+            box-shadow: 0 0 50px rgba(255, 102, 0, 0.5);
             animation: iconSpin 20s linear infinite;
         }
         
@@ -344,31 +345,33 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
             overflow: hidden;
         }
         
-        /* Static Skills Progress */
+        /* Enhanced Skills Progress */
         .skill-container {
             position: relative;
             margin-bottom: 1.5rem;
             padding: 1.5rem;
             background: linear-gradient(145deg, 
-                rgba(255, 255, 255, 0.05) 0%,
-                rgba(255, 255, 255, 0.02) 100%);
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(255, 255, 255, 0.04) 100%);
             border-radius: 15px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.12);
             overflow: hidden;
+            transition: all 0.3s ease;
         }
         
         .skill-container:hover {
-            border-color: rgba(255, 102, 0, 0.3);
+            border-color: rgba(255, 102, 0, 0.4);
+            transform: translateY(-2px);
         }
         
         .skill-bar-advanced {
             width: 100%;
             height: 12px;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4);
             border-radius: 10px;
             overflow: hidden;
             position: relative;
@@ -385,7 +388,7 @@
             overflow: hidden;
         }
         
-        /* Static Buttons - Orange Background */
+        /* Enhanced Buttons */
         .btn-professional {
             background: linear-gradient(135deg, 
                 var(--orange-primary) 0%, 
@@ -394,37 +397,39 @@
             border: none;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(255, 102, 0, 0.3);
-            /* Removed transitions and animations for orange background buttons */
+            box-shadow: 0 15px 35px rgba(255, 102, 0, 0.4);
+            transition: all 0.3s ease;
         }
         
         .btn-professional:hover {
-            box-shadow: 0 10px 25px rgba(255, 102, 0, 0.3);
-            /* Removed animation for orange background buttons */
+            box-shadow: 0 20px 45px rgba(255, 102, 0, 0.5);
+            transform: translateY(-3px);
         }
         
-        /* Static Project Cards */
+        /* Enhanced Project Cards */
         .project-card-advanced {
             background: linear-gradient(145deg, 
-                rgba(255, 255, 255, 0.06) 0%,
-                rgba(255, 255, 255, 0.02) 100%);
-            backdrop-filter: blur(20px) saturate(180%);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(255, 255, 255, 0.04) 100%);
+            backdrop-filter: blur(25px) saturate(180%);
+            border: 2px solid rgba(255, 255, 255, 0.12);
             border-radius: 20px;
             overflow: hidden;
             position: relative;
             color: white;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
         
         .project-card-advanced:hover {
             background: linear-gradient(145deg, 
-                rgba(255, 102, 0, 0.15) 0%,
-                rgba(255, 136, 51, 0.1) 100%);
-            border-color: rgba(255, 102, 0, 0.4);
+                rgba(255, 102, 0, 0.18) 0%,
+                rgba(255, 136, 51, 0.12) 100%);
+            border-color: rgba(255, 102, 0, 0.5);
+            transform: translateY(-5px);
         }
         
-        /* Static Timeline */
+        /* Enhanced Timeline */
         .timeline-advanced {
             position: relative;
             padding-right: 40px;
@@ -449,13 +454,14 @@
             margin-bottom: 2rem;
             padding: 1.5rem;
             background: linear-gradient(145deg, 
-                rgba(255, 255, 255, 0.08) 0%,
-                rgba(255, 255, 255, 0.03) 100%);
-            backdrop-filter: blur(15px);
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(20px);
             border-radius: 20px;
             border-right: 4px solid var(--orange-primary) !important;
             color: white;
             overflow: hidden;
+            transition: all 0.3s ease;
         }
         
         .timeline-item-advanced::before {
@@ -467,37 +473,40 @@
             height: 20px;
             background: var(--orange-primary) !important;
             border-radius: 50%;
-            box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
+            box-shadow: 0 0 25px rgba(255, 102, 0, 0.7);
         }
         
         .timeline-item-advanced:hover {
             background: linear-gradient(145deg, 
-                rgba(255, 102, 0, 0.15) 0%,
-                rgba(255, 136, 51, 0.1) 100%);
+                rgba(255, 102, 0, 0.18) 0%,
+                rgba(255, 136, 51, 0.12) 100%);
+            transform: translateY(-3px);
         }
         
-        /* Static Contact Items */
+        /* Enhanced Contact Items */
         .contact-item {
             background: linear-gradient(145deg, 
-                rgba(255, 255, 255, 0.08) 0%,
-                rgba(255, 255, 255, 0.03) 100%);
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(25px);
+            border: 2px solid rgba(255, 255, 255, 0.12);
             border-radius: 15px;
             padding: 1.5rem;
             position: relative;
             overflow: hidden;
             color: white;
+            transition: all 0.3s ease;
         }
         
         .contact-item:hover {
             background: linear-gradient(145deg, 
-                rgba(255, 102, 0, 0.12) 0%,
-                rgba(255, 136, 51, 0.08) 100%);
-            border-color: rgba(255, 102, 0, 0.3);
+                rgba(255, 102, 0, 0.15) 0%,
+                rgba(255, 136, 51, 0.1) 100%);
+            border-color: rgba(255, 102, 0, 0.4);
+            transform: translateY(-3px);
         }
         
-        /* Feature List with orange elements */
+        /* Enhanced Feature List */
         .feature-list {
             list-style: none;
             padding: 0;
@@ -509,14 +518,16 @@
             align-items: center;
             border-radius: 10px;
             margin-bottom: 0.3rem;
+            transition: all 0.3s ease;
         }
         
         .feature-list li:hover {
             color: var(--orange-light);
             background: linear-gradient(90deg, 
-                rgba(255, 102, 0, 0.1) 0%, 
-                rgba(255, 136, 51, 0.05) 100%);
+                rgba(255, 102, 0, 0.12) 0%, 
+                rgba(255, 136, 51, 0.08) 100%);
             padding-right: 1rem;
+            transform: translateX(-5px);
         }
         
         .feature-list li::before {
@@ -525,33 +536,31 @@
             font-weight: bold;
             margin-left: 1rem;
             font-size: 1.3em;
-            /* Removed animation for static orange elements */
         }
         
-        /* Status Badge with orange background */
+        /* Enhanced Status Badge */
         .status-badge {
             background: linear-gradient(45deg, #10B981, #34D399, #6EE7B7) !important;
             padding: 0.6rem 1.2rem;
             border-radius: 25px;
             font-weight: bold;
             font-size: 0.9rem;
-            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.5);
         }
         
-        /* Orange status badges */
         .status-badge.orange-static {
             background: linear-gradient(45deg, var(--orange-primary), var(--orange-secondary), var(--orange-light)) !important;
-            box-shadow: 0 5px 15px rgba(255, 102, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(255, 102, 0, 0.5);
         }
         
-        /* Section styling */
+        /* Enhanced Section styling */
         .section-advanced {
             padding: 3rem 0;
             position: relative;
         }
         
         .section-divider {
-            height: 2px;
+            height: 3px;
             background: linear-gradient(90deg, 
                 transparent 0%, 
                 var(--orange-primary) 20%, 
@@ -561,8 +570,7 @@
                 var(--orange-primary) 80%,
                 transparent 100%) !important;
             margin: 2rem 0;
-            border-radius: 2px;
-            /* Removed animation for static orange elements */
+            border-radius: 3px;
         }
         
         /* Enhanced project card grid */
@@ -579,7 +587,7 @@
             }
         }
         
-        /* Mobile optimizations */
+        /* Enhanced Mobile optimizations */
         @media (max-width: 768px) {
             .avatar-container {
                 width: 150px;
@@ -606,9 +614,17 @@
             .section-advanced {
                 padding: 2rem 0;
             }
+            
+            .hero-title {
+                font-size: clamp(2rem, 7vw, 4rem);
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(1.2rem, 3.5vw, 2rem);
+            }
         }
         
-        /* Compact layout */
+        /* Enhanced Compact layout */
         .container {
             max-width: 100% !important;
             padding: 0 1rem !important;
@@ -1090,7 +1106,7 @@
                     </div>
 
                     <!-- مشروع منبر العلم -->
-                    <div class="project-card-advanced p-6" onclick="window.open('https://t.me/SoftwareServicesBest/1088', '_blank')">
+                    <div class="project-card-advanced p-6" onclick="window.open('https://github.com/Ishaq770530245/minbar-alalm/blob/main/README.md', '_blank')">
                         <div class="flex items-center mb-4">
                             <i class="fas fa-graduation-cap text-2xl ml-3 text-gradient-advanced icon-3d"></i>
                             <h3 class="text-lg font-bold hover-glow cursor-pointer">📚 منبر العلم</h3>
